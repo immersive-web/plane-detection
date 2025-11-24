@@ -4,11 +4,11 @@ Title: WebXR Plane Detection Module
 Group: immersivewebcg
 Status: CG-DRAFT
 Level: 1
-ED: https://github.com/immersive-web/real-world-geometry/
-Repository: immersive-web/real-world-geometry
+ED: https://github.com/immersive-web/plane-detection/
+Repository: immersive-web/plane-detection
 Mailing List Archives: https://lists.w3.org/Archives/Public/public-immersive-web/
 
-!Participate: <a href="https://github.com/immersive-web/real-world-geometry/issues/new">File an issue</a> (<a href="https://github.com/immersive-web/real-world-geometry/issues">open issues</a>)
+!Participate: <a href="https://github.com/immersive-web/plane-detection/issues/new">File an issue</a> (<a href="https://github.com/immersive-web/plane-detection/issues">open issues</a>)
 !Participate: <a href="https://lists.w3.org/Archives/Public/public-immersive-web/">Mailing list archive</a>
 !Participate: <a href="irc://irc.w3.org:6665/">W3C's #immersive-web IRC</a>
 
