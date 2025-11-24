@@ -244,7 +244,7 @@ partial interface XRSession {
 };
 </script>
 
-{{XRSession}} is extended to contain the {{XRSession/initiateRoomCapture}} method which, if supported, will ask the {{XR Compositor}} to capture the current room layout. It is up to the {{XRCompositor}} if this will replace or augment the [=XRSession/set of tracked planes=]. The user agent MAY also ignore this call, for instance if it doesn't support a manual room capture more or if it determines that the room is already set up.
+{{XRSession}} is extended to contain the {{XRSession/initiateRoomCapture}} method which, if supported, will ask the [=XRSession/XR device=] to capture the current room layout. It is up to the [=XRSession/XR device=] if this will replace or augment the [=XRSession/set of tracked planes=]. The user agent MAY also ignore this call, for instance if it doesn't support a manual room capture more or if it determines that the room is already set up.
 The {{XRSession/initiateRoomCapture}} method MUST only be able to be called once per {{XRSession}}.
 
 </div>
