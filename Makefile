@@ -4,7 +4,7 @@ LOCAL_BIKESHED := $(shell command -v bikeshed 2> /dev/null)
 
 all: index.html
 
-out/index.html: index.bs
+index.html: index.bs
 ifndef LOCAL_BIKESHED
 	curl https://api.csswg.org/bikeshed/ -F file=@index.bs -F output=err
 	curl https://api.csswg.org/bikeshed/ -F file=@index.bs -F force=1 > index.html | tee
