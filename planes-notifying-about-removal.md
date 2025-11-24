@@ -1,7 +1,7 @@
 # Planes - informing about removal
 
 ## Introduction
-This document presents & discusses ways of notifying web applications about loss of tracking for previously detected planes, with the end goal of deciding on the API shape that should be implemented. Plane detection is described in more detail in the [explainer](https://github.com/immersive-web/real-world-geometry/blob/master/plane-detection-explainer.md). As shown in [“a bit more advanced use”](https://github.com/immersive-web/real-world-geometry/blob/master/plane-detection-explainer.md#plane-detection---a-bit-more-advanced-use) section, currently there is no built in way for the application to know which of the planes that have previously been detected are no longer being tracked. The applications that are interested in this information (for example for cleanup purposes) are forced to maintain their own set of planes detected in previous frame and compare its contents with the planes detected in current frame - old planes that have not been detected in the current frame are considered removed.
+This document presents & discusses ways of notifying web applications about loss of tracking for previously detected planes, with the end goal of deciding on the API shape that should be implemented. Plane detection is described in more detail in the [explainer](https://github.com/immersive-web/plane-detection/blob/master/explainer.md). As shown in [“a bit more advanced use”](https://github.com/immersive-web/plane-detection/blob/master/explainer.md#plane-detection---a-bit-more-advanced-use) section, currently there is no built in way for the application to know which of the planes that have previously been detected are no longer being tracked. The applications that are interested in this information (for example for cleanup purposes) are forced to maintain their own set of planes detected in previous frame and compare its contents with the planes detected in current frame - old planes that have not been detected in the current frame are considered removed.
 
 There are multiple possible ways of addressing this problem:
 1. Event-based approach.
@@ -96,7 +96,7 @@ partial interface XRSession {
 }
 ```
 
-This approach is mentioned in github issue [#4](https://github.com/immersive-web/real-world-geometry/issues/4) as “difference list”.
+This approach is mentioned in github issue [#4](https://github.com/immersive-web/plane-detection/issues/4) as “difference list”.
 
 ## Attribute-based approach - lastChangedTime attribite
 
@@ -110,7 +110,7 @@ partial interface XRPlane {
 
 ```
 
-This approach was first proposed in github issue [#4](https://github.com/immersive-web/real-world-geometry/issues/4#issuecomment-485595506).
+This approach was first proposed in github issue [#4](https://github.com/immersive-web/plane-detection/issues/4#issuecomment-485595506).
 
 ### Discussion
 Attribute-based approach is simplest for the web application to deal with, and is consistent with overall API shape as it delivers all frame-related data to the application in the request animation frame callback & input source events through `XRFrame` instance. It is sufficient to iterate over list of planes at the beginning of request animation frame callback and perform any additions / modifications / cleanups necessary due to the planes being newly detected / modified / removed. The attributes of planes present in `removedPlanes` will be accessible, but should not be relied upon as they'd represent stale state.
@@ -120,11 +120,11 @@ Another attribute-based approach that in addition allows us to polyfill the othe
 ## Timings
 Above approaches are making guarantees to the app developers about when will the event handlers fire / when will the promises resolve or get rejected, and when can the plane attributes be queried by the application. Below image serves to clarify the possible timings.
 
-![image with possible durations for callbacks](https://github.com/immersive-web/real-world-geometry/raw/master/img/timings-v3.jpg)
+![image with possible durations for callbacks](https://github.com/immersive-web/plane-detection/raw/master/img/timings-v3.jpg)
 
 Frame N is the frame where a hypothetical plane still exists. Frame N+1 is the frame in which that plane is no longer present.
 
-The vertical line represents the first moment where all data required to invoke application’s request animation frame callback is available to the user agent. The exact moment is implementation-dependent and might not be a single well-defined point in time - for example, there might exist an user-agent implementation where plane-related information is known earlier than viewer’s pose, AR camera image, etc. 
+The vertical line represents the first moment where all data required to invoke application’s request animation frame callback is available to the user agent. The exact moment is implementation-dependent and might not be a single well-defined point in time - for example, there might exist an user-agent implementation where plane-related information is known earlier than viewer’s pose, AR camera image, etc.
 
 Description of the durations presented above:
 1. Duration after request animation frame callback but prior to all data related to frame N+1 being received by the User Agent from AR system.
@@ -134,6 +134,6 @@ Description of the durations presented above:
 5. Duration of request animation frame callback for frame N+1.
 
 ## Links
-- https://github.com/immersive-web/real-world-geometry/blob/master/plane-detection-explainer.md
-- https://github.com/immersive-web/real-world-geometry/blob/master/plane-detection-explainer.md#plane-detection---a-bit-more-advanced-use
-- https://github.com/immersive-web/real-world-geometry/issues/4
+- https://github.com/immersive-web/plane-detection/blob/master/explainer.md
+- https://github.com/immersive-web/plane-detection/blob/master/explainer.md#plane-detection---a-bit-more-advanced-use
+- https://github.com/immersive-web/plane-detection/issues/4

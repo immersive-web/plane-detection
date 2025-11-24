@@ -1,5 +1,5 @@
 {
-    "src_file": "plane-detection.bs",
+    "src_file": "index.bs",
     "type": "bikeshed",
     "params": {
         "force": 1

@@ -106,7 +106,7 @@ The specification does not mandate a different behaviour.
 15. Does this specification have both "Security Considerations" and "Privacy
     Considerations" sections?
 
-[Yes](https://immersive-web.github.io/real-world-geometry/plane-detection.html#privacy-security).
+[Yes](https://immersive-web.github.io/plane-detection/plane-detection.html#privacy-security).
 
 16. Do features in your specification enable origins to downgrade default
     security protections?
