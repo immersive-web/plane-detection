@@ -23,25 +23,28 @@ Abstract: Plane Detection is a module extending the capabilities of the WebXR De
 
 <pre class="anchors">
 spec: WebXR Device API - Level 1; urlPrefix: https://immersive-web.github.io/webxr/#
-    for: XRFrame;
-        type: dfn; text: active; url: xrframe-active
-        type: dfn; text: session; url: dom-xrframe-session
-        type: dfn; text: time; url: xrframe-time
-    for: XRSession;
-        type: dfn; text: list of frame updates; url: xrsession-list-of-frame-updates
-        type: dfn; text: mode; url: xrsession-mode
-        type: dfn; text: XR device; url: xrsession-xr-device
-    for: XRSpace;
-        type: dfn; text: effective origin; url: xrspace-effective-origin
-        type: dfn; text: native origin; url: xrspace-native-origin
-        type: dfn; text: origin offset; url: xrspace-origin-offset
-        type: dfn; text: session; url: xrspace-session
     type: dfn; text: capable of supporting; url: capable-of-supporting
     type: dfn; text: feature descriptor; url: feature-descriptor
     type: dfn; text: identity transform; url: identity-transform
     type: dfn; text: inline XR device; url: inline-xr-device
     type: dfn; text: quantization; url: quantization
     type: dfn; text: rounding; url: rounding
+    type: interface; text: XRFrame; url: xrframe-interface
+    for: XRFrame;
+        type: dfn; text: active; url: xrframe-active
+        type: dfn; text: session; url: dom-xrframe-session
+        type: dfn; text: time; url: xrframe-time
+    type: interface; text: XRSession; url: xrsession-interface
+    for: XRSession;
+        type: dfn; text: list of frame updates; url: xrsession-list-of-frame-updates
+        type: dfn; text: mode; url: xrsession-mode
+        type: dfn; text: XR device; url: xrsession-xr-device
+    type: interface; text: XRSpace; url: xrspace-interface
+    for: XRSpace;
+        type: dfn; text: effective origin; url: xrspace-effective-origin
+        type: dfn; text: native origin; url: xrspace-native-origin
+        type: dfn; text: origin offset; url: xrspace-origin-offset
+        type: dfn; text: session; url: xrspace-session
     type: dfn; text: XR device; url: xr-device
     for: XR device;
         type: dfn; text: list of enabled features; url: dom-xrsession-enabledfeatures
