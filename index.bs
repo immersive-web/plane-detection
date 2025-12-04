@@ -14,6 +14,7 @@ Mailing List Archives: https://lists.w3.org/Archives/Public/public-immersive-web
 
 Editor: Alex Cooper 114716, Google http://google.com/, alcooper@google.com
 Former Editor: Piotr Bialecki 114482, Google https://google.com/, bialpio@google.com
+Editor: Rik Cabanier 106988, Meta https://meta.com, cabanier@meta.com
 
 Abstract: Plane Detection is a module extending the capabilities of the WebXR Device API. It enables apps to receive the set of planes detected by the native XR devices in order to enable more immersive experiences.
 </pre>
