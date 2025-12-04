@@ -5,8 +5,8 @@
   <title>WebXR Plane Detection Module</title>
   <meta content="CG-DRAFT" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
-  <meta content="Bikeshed version 86e3be07a, updated Tue Nov 18 16:58:08 2025 +0000" name="generator">
-  <link href="https://github.com/immersive-web/plane-detection/" rel="canonical">
+  <meta content="Bikeshed version 3c53a5b02, updated Thu Nov 27 17:03:30 2025 +0000" name="generator">
+  <link href="https://immersive-web.github.io/plane-detection/" rel="canonical">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
@@ -38,28 +38,7 @@
     overflow: hidden;
     word-break: normal;
   }
-  .unstable::before {
-    content: "This section is not stable";
-    display: block;
-    font-weight: bold;
-    text-align: right;
-    color: red;
-  }
-  .unstable {
-    border: thin solid pink;
-    border-radius: .5em;
-    padding: .5em;
-    margin: .5em calc(-0.5em - 1px);
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='290'><text transform='rotate(-45)' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='70' y='210' opacity='.1' fill='white'>Unstable</text></svg>");
-    background-repeat: repeat;
-    background-color: #282828;
-  }
   @media (prefers-color-scheme: light) {
-    .unstable {
-      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='290'><text transform='rotate(-45)' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='70' y='210' opacity='.1'>Unstable</text></svg>");
-      background-color: #FFF4F4;
-    }
-
     .tg th {
       background: #90b8de;
     }
@@ -67,13 +46,6 @@
     .tg td {
       background-color: rgb(221, 238, 255);
     }
-  }
-  .unstable h3:first-of-type {
-    margin-top: 0.5rem;
-  }
-  .unstable.example:not(.no-marker)::before {
-    content: "Example " counter(example) " (Unstable)";
-    float: none;
   }
 </style>
 <style>/* Boilerplate: style-autolinks */
@@ -808,13 +780,13 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
 </p>
    <h1 class="no-ref p-name" id="title">WebXR Plane Detection Module</h1>
    <p id="w3c-state"><a href="https://www.w3.org/standards/types/#CG-DRAFT">Draft Community Group Report</a>,
-    <time class="dt-updated" datetime="2025-11-26">26 November 2025</time></p>
+    <time class="dt-updated" datetime="2025-12-04">4 December 2025</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
      <dl>
       <dt>This version:
-      <dd><a class="u-url" href="https://github.com/immersive-web/plane-detection/">https://github.com/immersive-web/plane-detection/</a>
+      <dd><a class="u-url" href="https://immersive-web.github.io/plane-detection/">https://immersive-web.github.io/plane-detection/</a>
       <dt>Issue Tracking:
       <dd><a href="https://github.com/immersive-web/plane-detection/issues/">GitHub</a>
       <dt class="editor">Editor:
@@ -835,6 +807,7 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="heading no-num no-ref no-toc settled" id="abstract"><span class="content">Abstract</span></h2>
+   <p>Plane Detection is a module extending the capabilities of the WebXR Device API. It enables apps to receive the set of planes detected by the native XR devices in order to enable more immersive experiences.</p>
   </div>
   <h2 class="heading no-num no-ref no-toc settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
@@ -843,7 +816,7 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
    <h2 class="no-num no-ref no-toc" id="contents">Table of Contents</h2>
-   <ol class="toc" role="directory">
+   <ol class="toc">
     <li><a href="#intro"><span class="secno">1</span> <span class="content">Introduction</span></a>
     <li>
      <a href="#anchor-feature-initialization"><span class="secno">2</span> <span class="content">Initialization</span></a>
@@ -922,7 +895,7 @@ The following code demonstrates how a session that requires plane detection coul
    <h3 class="heading settled" data-level="3.2" id="plane"><span class="secno">3.2. </span><span class="content">XRPlane</span><a class="self-link" href="#plane"></a></h3>
 <pre class="def highlight idl">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xrplane"><code><c- g>XRPlane</c-></code></dfn> {
-    [<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject" id="ref-for-SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace"><c- n>XRSpace</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRPlane" data-dfn-type="attribute" data-export data-readonly data-type="XRSpace" id="dom-xrplane-planespace"><code><c- g>planeSpace</c-></code></dfn>;
+    [<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject" id="ref-for-SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace-interface" id="ref-for-xrspace-interface"><c- n>XRSpace</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRPlane" data-dfn-type="attribute" data-export data-readonly data-type="XRSpace" id="dom-xrplane-planespace"><code><c- g>planeSpace</c-></code></dfn>;
 
     <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-frozen-array" id="ref-for-idl-frozen-array"><c- b>FrozenArray</c-></a>&lt;<a data-link-type="idl-name" href="https://drafts.fxtf.org/geometry-1/#dompointreadonly" id="ref-for-dompointreadonly"><c- n>DOMPointReadOnly</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRPlane" data-dfn-type="attribute" data-export data-readonly data-type="FrozenArray<DOMPointReadOnly>" id="dom-xrplane-polygon"><code><c- g>polygon</c-></code></dfn>;
     <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#enumdef-xrplaneorientation" id="ref-for-enumdef-xrplaneorientation"><c- n>XRPlaneOrientation</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="XRPlane" data-dfn-type="attribute" data-export data-readonly data-type="XRPlaneOrientation?" id="dom-xrplane-orientation"><code><c- g>orientation</c-></code></dfn>;
@@ -931,18 +904,16 @@ The following code demonstrates how a session that requires plane detection coul
 };
 </pre>
    <p>An <code class="idl"><a data-link-type="idl" href="#xrplane" id="ref-for-xrplane">XRPlane</a></code> represents a single, flat surface detected by the underlying XR system.</p>
-   <p>The <code class="idl"><a data-link-type="idl" href="#dom-xrplane-planespace" id="ref-for-dom-xrplane-planespace">planeSpace</a></code> is an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace①">XRSpace</a></code> that establishes the coordinate system of the plane. The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin">native origin</a> of the <code class="idl"><a data-link-type="idl" href="#dom-xrplane-planespace" id="ref-for-dom-xrplane-planespace①">planeSpace</a></code> tracks plane’s center. The underlying XR system defines the exact meaning of the plane center. The Y axis of the coordinate system defined by <code class="idl"><a data-link-type="idl" href="#dom-xrplane-planespace" id="ref-for-dom-xrplane-planespace②">planeSpace</a></code> MUST represent the plane’s normal vector.</p>
+   <p>The <code class="idl"><a data-link-type="idl" href="#dom-xrplane-planespace" id="ref-for-dom-xrplane-planespace">planeSpace</a></code> is an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrspace-interface" id="ref-for-xrspace-interface①">XRSpace</a></code> that establishes the coordinate system of the plane. The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin">native origin</a> of the <code class="idl"><a data-link-type="idl" href="#dom-xrplane-planespace" id="ref-for-dom-xrplane-planespace①">planeSpace</a></code> tracks plane’s center. The underlying XR system defines the exact meaning of the plane center. The Y axis of the coordinate system defined by <code class="idl"><a data-link-type="idl" href="#dom-xrplane-planespace" id="ref-for-dom-xrplane-planespace②">planeSpace</a></code> MUST represent the plane’s normal vector.</p>
    <p>Each <code class="idl"><a data-link-type="idl" href="#xrplane" id="ref-for-xrplane①">XRPlane</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRPlane" data-dfn-type="dfn" data-noexport id="xrplane-native-entity">native entity</dfn>.</p>
    <p>Each <code class="idl"><a data-link-type="idl" href="#xrplane" id="ref-for-xrplane②">XRPlane</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRPlane" data-dfn-type="dfn" data-noexport id="xrplane-frame">frame</dfn>.</p>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-xrplane-polygon" id="ref-for-dom-xrplane-polygon">polygon</a></code> is an array of vertices that describe the shape of the plane. They are returned in the form of a loop of points at the edges of the polygon, expressed in the coordinate system defined by <code class="idl"><a data-link-type="idl" href="#dom-xrplane-planespace" id="ref-for-dom-xrplane-planespace③">planeSpace</a></code>. The Y coordinate of each vertex MUST be <code>0.0</code>.</p>
-   <div class="unstable">
-    <p>The <code class="idl"><a data-link-type="idl" href="#dom-xrplane-semanticlabel" id="ref-for-dom-xrplane-semanticlabel">semanticLabel</a></code> attribute is a string that describes the <a data-link-type="dfn" href="#semantic-label" id="ref-for-semantic-label">semantic label</a> of the polygon. This array is empty if there is no semantic information. The <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem">XRSystem</a></code> SHOULD populate this  with the <a data-link-type="dfn" href="#semantic-label" id="ref-for-semantic-label①">semantic label</a> it has knowledge of.</p>
-    <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="semantic-label">semantic label</dfn> is an ASCII lowercase DOMString that describes the name in the real world of the <code class="idl"><a data-link-type="idl" href="#xrplane" id="ref-for-xrplane③">XRPlane</a></code> as known by the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem①">XRSystem</a></code>.
+   <p>The <code class="idl"><a data-link-type="idl" href="#dom-xrplane-semanticlabel" id="ref-for-dom-xrplane-semanticlabel">semanticLabel</a></code> attribute is a string that describes the <a data-link-type="dfn" href="#semantic-label" id="ref-for-semantic-label">semantic label</a> of the polygon. This string MAY be either null or empty if there is no semantic information. The <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem">XRSystem</a></code> SHOULD populate this with the <a data-link-type="dfn" href="#semantic-label" id="ref-for-semantic-label①">semantic label</a> it has knowledge of.</p>
+   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="semantic-label">semantic label</dfn> is an ASCII lowercase DOMString that describes the name in the real world of the <code class="idl"><a data-link-type="idl" href="#xrplane" id="ref-for-xrplane③">XRPlane</a></code> as known by the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem①">XRSystem</a></code>.
 The list of semantic labels is defined in the <a href="https://github.com/immersive-web/semantic-labels">semantic label registry</a>.</p>
-   </div>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-xrplane-orientation" id="ref-for-dom-xrplane-orientation">orientation</a></code> describes orientation of the plane, as classified by the underlying XR system. In case the orientation cannot be classified into <code class="idl"><a data-link-type="idl" href="#dom-xrplaneorientation-horizontal" id="ref-for-dom-xrplaneorientation-horizontal①">"horizontal"</a></code> or <code class="idl"><a data-link-type="idl" href="#dom-xrplaneorientation-vertical" id="ref-for-dom-xrplaneorientation-vertical①">"vertical"</a></code> by the underlying XR system, this attribute will be set to <code>null</code>.</p>
    <p>The <code class="idl"><a data-link-type="idl" href="#dom-xrplane-lastchangedtime" id="ref-for-dom-xrplane-lastchangedtime">lastChangedTime</a></code> is the last time some of the plane attributes have been changed.</p>
-   <p class="note" role="note"><span class="marker">Note:</span> The pose of a plane is not considered a plane attribute and therefore updates to plane pose will not cause the <code class="idl"><a data-link-type="idl" href="#dom-xrplane-lastchangedtime" id="ref-for-dom-xrplane-lastchangedtime①">lastChangedTime</a></code> to change. This is because plane pose is a property that is derived from two different entities - <code class="idl"><a data-link-type="idl" href="#dom-xrplane-planespace" id="ref-for-dom-xrplane-planespace④">planeSpace</a></code> and the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace②">XRSpace</a></code> relative to which the pose is to be computed via <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrframe-getpose" id="ref-for-dom-xrframe-getpose">getPose()</a></code> function.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> The pose of a plane is not considered a plane attribute and therefore updates to plane pose will not cause the <code class="idl"><a data-link-type="idl" href="#dom-xrplane-lastchangedtime" id="ref-for-dom-xrplane-lastchangedtime①">lastChangedTime</a></code> to change. This is because plane pose is a property that is derived from two different entities - <code class="idl"><a data-link-type="idl" href="#dom-xrplane-planespace" id="ref-for-dom-xrplane-planespace④">planeSpace</a></code> and the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrspace-interface" id="ref-for-xrspace-interface②">XRSpace</a></code> relative to which the pose is to be computed via <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrframe-getpose" id="ref-for-dom-xrframe-getpose">getPose()</a></code> function.</p>
    <h2 class="heading settled" data-level="4" id="obtaining-planes"><span class="secno">4. </span><span class="content">Obtaining detected planes</span><a class="self-link" href="#obtaining-planes"></a></h2>
    <h3 class="heading settled" data-level="4.1" id="plane-set"><span class="secno">4.1. </span><span class="content">XRPlaneSet</span><a class="self-link" href="#plane-set"></a></h3>
 <pre class="def highlight idl">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=<c- n>Window</c->]
@@ -950,21 +921,20 @@ The list of semantic labels is defined in the <a href="https://github.com/immers
   <c- b>readonly</c-> <c- b>setlike</c->&lt;<a data-link-type="idl-name" href="#xrplane" id="ref-for-xrplane④"><c- n>XRPlane</c-></a>>;
 };
 </pre>
-   <p>An <code class="idl"><a data-link-type="idl" href="#xrplaneset" id="ref-for-xrplaneset">XRPlaneSet</a></code> is a collection of <code class="idl"><a data-link-type="idl" href="#xrplane" id="ref-for-xrplane⑤">XRPlane</a></code>s. It is the primary mechanism of obtaining the collection of planes detected in an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe">XRFrame</a></code>.</p>
-<pre class="def highlight idl"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe①"><c- g>XRFrame</c-></a> {
+   <p>An <code class="idl"><a data-link-type="idl" href="#xrplaneset" id="ref-for-xrplaneset">XRPlaneSet</a></code> is a collection of <code class="idl"><a data-link-type="idl" href="#xrplane" id="ref-for-xrplane⑤">XRPlane</a></code>s. It is the primary mechanism of obtaining the collection of planes detected in an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe-interface" id="ref-for-xrframe-interface">XRFrame</a></code>.</p>
+<pre class="def highlight idl"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe-interface" id="ref-for-xrframe-interface①"><c- g>XRFrame</c-></a> {
   <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#xrplaneset" id="ref-for-xrplaneset①"><c- n>XRPlaneSet</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="attribute" data-export data-readonly data-type="XRPlaneSet" id="dom-xrframe-detectedplanes"><code><c- g>detectedPlanes</c-></code></dfn>;
 };
 </pre>
-   <p><code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe②">XRFrame</a></code> is extended to contain <code class="idl"><a data-link-type="idl" href="#dom-xrframe-detectedplanes" id="ref-for-dom-xrframe-detectedplanes">detectedPlanes</a></code> attribute which contains all planes that are still tracked in the frame. The set is initially empty and will be populated by the <a data-link-type="dfn" href="#update-planes" id="ref-for-update-planes①">update planes</a> algorithm. If this attribute is accessed when the frame is not <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrframe-active" id="ref-for-xrframe-active">active</a>, the user agent MUST throw <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code>.</p>
-   <div class="unstable">
-<pre class="def highlight idl"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession"><c- g>XRSession</c-></a> {
+   <p><code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe-interface" id="ref-for-xrframe-interface②">XRFrame</a></code> is extended to contain <code class="idl"><a data-link-type="idl" href="#dom-xrframe-detectedplanes" id="ref-for-dom-xrframe-detectedplanes">detectedPlanes</a></code> attribute which contains all planes that are still tracked in the frame. The set is initially empty and will be populated by the <a data-link-type="dfn" href="#update-planes" id="ref-for-update-planes①">update planes</a> algorithm. If this attribute is accessed when the frame is not <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrframe-active" id="ref-for-xrframe-active">active</a>, the user agent MUST throw <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code>.</p>
+<pre class="def highlight idl"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface"><c- g>XRSession</c-></a> {
   <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise"><c- b>Promise</c-></a>&lt;<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-undefined" id="ref-for-idl-undefined"><c- b>undefined</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRSession" data-dfn-type="method" data-export data-lt="initiateRoomCapture()" id="dom-xrsession-initiateroomcapture"><code><c- g>initiateRoomCapture</c-></code></dfn>();
 };
 </pre>
-    <p><code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession①">XRSession</a></code> is extended to contain the <code class="idl"><a data-link-type="idl" href="#dom-xrsession-initiateroomcapture" id="ref-for-dom-xrsession-initiateroomcapture">initiateRoomCapture</a></code> method which, if supported, will ask the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device">XR device</a> to capture the current room layout. It is up to the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device①">XR device</a> if this will replace or augment the <a data-link-type="dfn" href="#xrsession-set-of-tracked-planes" id="ref-for-xrsession-set-of-tracked-planes">set of tracked planes</a>. The user agent MAY also ignore this call, for instance if it doesn’t support a manual room capture more or if it determines that the room is already set up.
-The <code class="idl"><a data-link-type="idl" href="#dom-xrsession-initiateroomcapture" id="ref-for-dom-xrsession-initiateroomcapture①">initiateRoomCapture</a></code> method MUST only be able to be called once per <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession②">XRSession</a></code>.</p>
-   </div>
-   <p><code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession③">XRSession</a></code> is also extended to contain associated <dfn class="dfn-paneled" data-dfn-for="XRSession" data-dfn-type="dfn" data-noexport id="xrsession-set-of-tracked-planes">set of tracked planes</dfn>, which is initially empty. The elements of the set will be of <code class="idl"><a data-link-type="idl" href="#xrplane" id="ref-for-xrplane⑥">XRPlane</a></code> type.</p>
+   <p><code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface①">XRSession</a></code> is extended to contain the <code class="idl"><a data-link-type="idl" href="#dom-xrsession-initiateroomcapture" id="ref-for-dom-xrsession-initiateroomcapture">initiateRoomCapture</a></code> method which, if supported, will ask the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device">XR device</a> to capture the current room layout. It is up to the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device①">XR device</a> if this will replace or augment the <a data-link-type="dfn" href="#xrsession-set-of-tracked-planes" id="ref-for-xrsession-set-of-tracked-planes">set of tracked planes</a>. The user agent MAY also ignore this call, for instance if it doesn’t support a manual room capture more or if it determines that the room is already set up.
+If the <code class="idl"><a data-link-type="idl" href="#dom-xrsession-initiateroomcapture" id="ref-for-dom-xrsession-initiateroomcapture①">initiateRoomCapture</a></code> method is called more than once for a given <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface②">XRSession</a></code>, the user agent MUST throw <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror①">InvalidStateError</a></code>.
+If <a data-link-type="dfn" href="#plane-detection" id="ref-for-plane-detection">plane-detection</a> feature descriptor is not <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-contain" id="ref-for-list-contain">contained</a> in the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface③">XRSession</a></code>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device②">XR device</a>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures" id="ref-for-dom-xrsession-enabledfeatures">list of enabled features</a> for the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface④">XRSession</a></code>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-mode" id="ref-for-xrsession-mode">mode</a>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw" id="ref-for-dfn-throw">throw</a> a <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#notsupportederror" id="ref-for-notsupportederror">NotSupportedError</a></code>.</p>
+   <p><code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface⑤">XRSession</a></code> is also extended to contain associated <dfn class="dfn-paneled" data-dfn-for="XRSession" data-dfn-type="dfn" data-noexport id="xrsession-set-of-tracked-planes">set of tracked planes</dfn>, which is initially empty. The elements of the set will be of <code class="idl"><a data-link-type="idl" href="#xrplane" id="ref-for-xrplane⑥">XRPlane</a></code> type.</p>
    <div class="algorithm" data-algorithm="update-planes">
     
 In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="update-planes">update planes</dfn> for <var>frame</var>, the user agent MUST run the following steps:
@@ -973,7 +943,9 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
      <li data-md>
       <p>Let <var>session</var> be a <var>frame</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session">session</a>.</p>
      <li data-md>
-      <p>Let <var>device</var> be a <var>session</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device②">XR device</a>.</p>
+      <p>Let <var>device</var> be a <var>session</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device③">XR device</a>.</p>
+     <li data-md>
+      <p>If <a data-link-type="dfn" href="#plane-detection" id="ref-for-plane-detection①">plane-detection</a> feature descriptor is not <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-contain" id="ref-for-list-contain①">contained</a> in <var>device</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures" id="ref-for-dom-xrsession-enabledfeatures①">list of enabled features</a> for <var>session</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-mode" id="ref-for-xrsession-mode①">mode</a>, abort these steps.</p>
      <li data-md>
       <p>Let <var>trackedPlanes</var> be a result of calling into <var>device</var>’s <a data-link-type="dfn" href="#native-plane-detection" id="ref-for-native-plane-detection①">native plane detection</a> capability to obtain tracked planes at <var>frame</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrframe-time" id="ref-for-xrframe-time">time</a>.</p>
      <li data-md>
@@ -996,7 +968,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
    </div>
    <div class="algorithm" data-algorithm="create-plane-object">
     
-In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="create-plane-object">create plane object</dfn> from a <a data-link-type="dfn" href="#native-plane-objects" id="ref-for-native-plane-objects">native plane object</a> <var>native plane</var> and <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe③">XRFrame</a></code> <var>frame</var>, the user agent MUST run the following steps:
+In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="create-plane-object">create plane object</dfn> from a <a data-link-type="dfn" href="#native-plane-objects" id="ref-for-native-plane-objects">native plane object</a> <var>native plane</var> and <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe-interface" id="ref-for-xrframe-interface③">XRFrame</a></code> <var>frame</var>, the user agent MUST run the following steps:
 
     <ol>
      <li data-md>
@@ -1004,7 +976,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="creat
      <li data-md>
       <p>Set <var>result</var>’s <a data-link-type="dfn" href="#xrplane-native-entity" id="ref-for-xrplane-native-entity">native entity</a> to <var>native plane</var>.</p>
      <li data-md>
-      <p>Set <var>result</var>’s <code class="idl"><a data-link-type="idl" href="#dom-xrplane-planespace" id="ref-for-dom-xrplane-planespace⑤">planeSpace</a></code> to a new <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace③">XRSpace</a></code> object created with <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-session" id="ref-for-xrspace-session">session</a> set to <var>frame</var>’s <code class="idl"><a data-link-type="idl" data-refhint-key="https://immersive-web.github.io/webxr/#dom-xrframe-session" href="https://immersive-web.github.io/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session①">session</a></code> and <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin①">native origin</a> set to track <var>native plane</var>’s native origin.</p>
+      <p>Set <var>result</var>’s <code class="idl"><a data-link-type="idl" href="#dom-xrplane-planespace" id="ref-for-dom-xrplane-planespace⑤">planeSpace</a></code> to a new <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrspace-interface" id="ref-for-xrspace-interface③">XRSpace</a></code> object created with <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-session" id="ref-for-xrspace-session">session</a> set to <var>frame</var>’s <code class="idl"><a data-link-type="idl" data-refhint-key="https://immersive-web.github.io/webxr/#dom-xrframe-session" href="https://immersive-web.github.io/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session①">session</a></code> and <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin①">native origin</a> set to track <var>native plane</var>’s native origin.</p>
      <li data-md>
       <p>Invoke <a data-link-type="dfn" href="#update-plane-object" id="ref-for-update-plane-object①">update plane object</a> algorithm with <var>result</var>, <var>native plane</var>, and <var>frame</var>.</p>
      <li data-md>
@@ -1014,7 +986,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="creat
    </div>
    <div class="algorithm" data-algorithm="update-plane-object">
     
-In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="update-plane-object">update plane object</dfn> <var>plane</var> from a <a data-link-type="dfn" href="#native-plane-objects" id="ref-for-native-plane-objects①">native plane object</a> <var>native plane</var> and <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe④">XRFrame</a></code> <var>frame</var>, the user agent MUST run the following steps:
+In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="update-plane-object">update plane object</dfn> <var>plane</var> from a <a data-link-type="dfn" href="#native-plane-objects" id="ref-for-native-plane-objects①">native plane object</a> <var>native plane</var> and <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe-interface" id="ref-for-xrframe-interface④">XRFrame</a></code> <var>frame</var>, the user agent MUST run the following steps:
 
     <ol>
      <li data-md>
@@ -1024,7 +996,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
      <li data-md>
       <p>Set <var>plane</var>’s <code class="idl"><a data-link-type="idl" href="#dom-xrplane-polygon" id="ref-for-dom-xrplane-polygon①">polygon</a></code> to the new array of vertices representing <var>native plane</var>’s polygon, performing all necessary conversions to account for differences in native plane polygon representation.</p>
      <li data-md>
-      <div class="unstable">Set <var>plane</var>’s <code class="idl"><a data-link-type="idl" href="#dom-xrplane-semanticlabel" id="ref-for-dom-xrplane-semanticlabel①">semanticLabel</a></code> to a new string with the <a data-link-type="dfn" href="#semantic-label" id="ref-for-semantic-label②">semantic labels</a>.</div>
+      <p>Set <var>plane</var>’s <code class="idl"><a data-link-type="idl" href="#dom-xrplane-semanticlabel" id="ref-for-dom-xrplane-semanticlabel①">semanticLabel</a></code> to a new string with the <a data-link-type="dfn" href="#semantic-label" id="ref-for-semantic-label②">semantic labels</a>.</p>
      <li data-md>
       <p>If desired, reduce the level of detail of the <var>plane</var>’s <code class="idl"><a data-link-type="idl" href="#dom-xrplane-polygon" id="ref-for-dom-xrplane-polygon②">polygon</a></code> as described in <a href="#privacy-security">§ 6 Privacy &amp; Security Considerations</a>.</p>
      <li data-md>
@@ -1093,7 +1065,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
    <h2 class="heading settled" data-level="5" id="native-device-concepts"><span class="secno">5. </span><span class="content">Native device concepts</span><a class="self-link" href="#native-device-concepts"></a></h2>
    <h3 class="heading settled" data-level="5.1" id="native-plane-detection-section"><span class="secno">5.1. </span><span class="content">Native plane detection</span><a class="self-link" href="#native-plane-detection-section"></a></h3>
    <section class="non-normative">
-    <p>The plane detection API provides information about flat surfaces detected in users' environment. It is assumed in this specification that user agents can rely on <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="native-plane-detection">native plane detection</dfn> capabilities provided by the underlying platform for their implementation of plane-detection features. Specifically, the underlying XR device should provide a way to query all planes that are tracked at a time that corresponds to the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrframe-time" id="ref-for-xrframe-time②">time</a>of a specific <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe⑤">XRFrame</a></code>.</p>
+    <p>The plane detection API provides information about flat surfaces detected in users' environment. It is assumed in this specification that user agents can rely on <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="native-plane-detection">native plane detection</dfn> capabilities provided by the underlying platform for their implementation of plane-detection features. Specifically, the underlying XR device should provide a way to query all planes that are tracked at a time that corresponds to the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrframe-time" id="ref-for-xrframe-time②">time</a>of a specific <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe-interface" id="ref-for-xrframe-interface⑤">XRFrame</a></code>.</p>
     <p>Moreover, it is assumed that the tracked planes, known as <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="native-plane-objects">native plane objects</dfn>, maintain their identity across frames - that is, given a plane object <code>P</code> returned by the underlying system at time <code>t0</code>, and a plane object <code>Q</code> returned by the underlying system at time <code>t1</code>, it is possible for the user agent to query the underlying system about whether <code>P</code> and <code>Q</code> correspond to the same logical plane object. The underlying system is also expected to provide a <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin②">native origin</a> that can be used to query the location of a pose at time <code>t</code>, although it is not guaranteed that plane pose will always be known (for example for planes that are still tracked but not localizable at a given time). In addition, the native plane object should expose a polygon describing approximate shape of the detected plane.</p>
     <p>In addition, the underlying system should recognize native planes as native entities for the purposes of <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/anchors/#xr-anchor" id="ref-for-xr-anchor">XRAnchor</a></code> creation. For more information, see <a href="https://immersive-web.github.io/anchors/#native-anchor">WebXR Anchors Module § native-anchor</a> section.</p>
    </section>
@@ -1184,22 +1156,26 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
      <li><span class="dfn-paneled" id="0e9f636b">DOMHighResTimeStamp</span>
     </ul>
    <li>
+    <a data-link-type="biblio">[INFRA]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="ae8def21">contain</span>
+    </ul>
+   <li>
     <a data-link-type="biblio">[WEBIDL]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="8855a9aa">DOMString</span>
      <li><span class="dfn-paneled" id="889e932f">Exposed</span>
      <li><span class="dfn-paneled" id="dcf5fafa">FrozenArray</span>
      <li><span class="dfn-paneled" id="797018a7">InvalidStateError</span>
+     <li><span class="dfn-paneled" id="3182eb71">NotSupportedError</span>
      <li><span class="dfn-paneled" id="bdbd19d1">Promise</span>
      <li><span class="dfn-paneled" id="a5c91173">SameObject</span>
+     <li><span class="dfn-paneled" id="b4cfa5ce">throw</span>
      <li><span class="dfn-paneled" id="5f90bbfb">undefined</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBXR]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="7a030114">XRFrame</span>
-     <li><span class="dfn-paneled" id="b23556e5">XRSession</span>
-     <li><span class="dfn-paneled" id="0b566548">XRSpace</span>
      <li><span class="dfn-paneled" id="8f974556">XRSystem</span>
      <li><span class="dfn-paneled" id="a9d2b73a">getPose(space, baseSpace)</span>
      <li><span class="dfn-paneled" id="7c7eccf9">session</span>
@@ -1212,11 +1188,16 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
    <li>
     <a data-link-type="biblio">[WEBXR DEVICE API - LEVEL 1]</a> defines the following terms:
     <ul>
+     <li><span class="dfn-paneled" id="80757ed4">XRFrame</span>
+     <li><span class="dfn-paneled" id="994923d4">XRSession</span>
+     <li><span class="dfn-paneled" id="a893a3e2">XRSpace</span>
      <li><span class="dfn-paneled" id="8af2159c">active</span>
      <li><span class="dfn-paneled" id="d6345ec4">capable of supporting</span>
      <li><span class="dfn-paneled" id="348f253b">feature descriptor</span>
      <li><span class="dfn-paneled" id="3f381e58">inline XR device</span>
+     <li><span class="dfn-paneled" id="a43bf215">list of enabled features</span>
      <li><span class="dfn-paneled" id="7f1caef1">list of frame updates</span>
+     <li><span class="dfn-paneled" id="4205ec1d">mode</span>
      <li><span class="dfn-paneled" id="a03d6806">native origin</span>
      <li><span class="dfn-paneled" id="1776cb35">quantization</span>
      <li><span class="dfn-paneled" id="5a3f05c6">rounding</span>
@@ -1233,6 +1214,8 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
    <dd>Simon Pieters; Chris Harrelson. <a href="https://drafts.fxtf.org/geometry/"><cite>Geometry Interfaces Module Level 1</cite></a>. URL: <a href="https://drafts.fxtf.org/geometry/">https://drafts.fxtf.org/geometry/</a>
    <dt id="biblio-hr-time-3">[HR-TIME-3]
    <dd>Yoav Weiss. <a href="https://w3c.github.io/hr-time/"><cite>High Resolution Time</cite></a>. URL: <a href="https://w3c.github.io/hr-time/">https://w3c.github.io/hr-time/</a>
+   <dt id="biblio-infra">[INFRA]
+   <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
    <dt id="biblio-webidl">[WEBIDL]
@@ -1253,7 +1236,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
 
 [<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <a href="#xrplane"><code><c- g>XRPlane</c-></code></a> {
-    [<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> <a data-readonly data-type="XRSpace" href="#dom-xrplane-planespace"><code><c- g>planeSpace</c-></code></a>;
+    [<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace-interface"><c- n>XRSpace</c-></a> <a data-readonly data-type="XRSpace" href="#dom-xrplane-planespace"><code><c- g>planeSpace</c-></code></a>;
 
     <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-frozen-array"><c- b>FrozenArray</c-></a>&lt;<a data-link-type="idl-name" href="https://drafts.fxtf.org/geometry-1/#dompointreadonly"><c- n>DOMPointReadOnly</c-></a>> <a data-readonly data-type="FrozenArray<DOMPointReadOnly>" href="#dom-xrplane-polygon"><code><c- g>polygon</c-></code></a>;
     <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#enumdef-xrplaneorientation"><c- n>XRPlaneOrientation</c-></a>? <a data-readonly data-type="XRPlaneOrientation?" href="#dom-xrplane-orientation"><code><c- g>orientation</c-></code></a>;
@@ -1266,11 +1249,11 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
   <c- b>readonly</c-> <c- b>setlike</c->&lt;<a data-link-type="idl-name" href="#xrplane"><c- n>XRPlane</c-></a>>;
 };
 
-<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe"><c- g>XRFrame</c-></a> {
+<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe-interface"><c- g>XRFrame</c-></a> {
   <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#xrplaneset"><c- n>XRPlaneSet</c-></a> <a data-readonly data-type="XRPlaneSet" href="#dom-xrframe-detectedplanes"><code><c- g>detectedPlanes</c-></code></a>;
 };
 
-<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrsession"><c- g>XRSession</c-></a> {
+<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrsession-interface"><c- g>XRSession</c-></a> {
   <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise"><c- b>Promise</c-></a>&lt;<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-undefined"><c- b>undefined</c-></a>> <a href="#dom-xrsession-initiateroomcapture"><code><c- g>initiateRoomCapture</c-></code></a>();
 };
 
@@ -1475,29 +1458,34 @@ function parseHTML(markup) {
 "use strict";
 {
 let dfnPanelData = {
-"0b566548": {"dfnID":"0b566548","dfnText":"XRSpace","external":true,"refSections":[{"refs":[{"id":"ref-for-xrspace"},{"id":"ref-for-xrspace\u2460"},{"id":"ref-for-xrspace\u2461"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-xrspace\u2462"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrspace"},
 "0e9f636b": {"dfnID":"0e9f636b","dfnText":"DOMHighResTimeStamp","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-domhighrestimestamp"}],"title":"3.2. XRPlane"}],"url":"https://w3c.github.io/hr-time/#dom-domhighrestimestamp"},
 "1776cb35": {"dfnID":"1776cb35","dfnText":"quantization","external":true,"refSections":[{"refs":[{"id":"ref-for-quantization"},{"id":"ref-for-quantization\u2460"}],"title":"6. Privacy & Security Considerations"}],"url":"https://immersive-web.github.io/webxr/#quantization"},
+"3182eb71": {"dfnID":"3182eb71","dfnText":"NotSupportedError","external":true,"refSections":[{"refs":[{"id":"ref-for-notsupportederror"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#notsupportederror"},
 "348f253b": {"dfnID":"348f253b","dfnText":"feature descriptor","external":true,"refSections":[{"refs":[{"id":"ref-for-feature-descriptor"}],"title":"2.1. Feature descriptor"}],"url":"https://immersive-web.github.io/webxr/#feature-descriptor"},
 "3f381e58": {"dfnID":"3f381e58","dfnText":"inline XR device","external":true,"refSections":[{"refs":[{"id":"ref-for-inline-xr-device"}],"title":"2.1. Feature descriptor"}],"url":"https://immersive-web.github.io/webxr/#inline-xr-device"},
-"4da8c16e": {"dfnID":"4da8c16e","dfnText":"XR device","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-xr-device"},{"id":"ref-for-xrsession-xr-device\u2460"},{"id":"ref-for-xrsession-xr-device\u2461"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsession-xr-device"},
+"4205ec1d": {"dfnID":"4205ec1d","dfnText":"mode","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-mode"},{"id":"ref-for-xrsession-mode\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsession-mode"},
+"4da8c16e": {"dfnID":"4da8c16e","dfnText":"XR device","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-xr-device"},{"id":"ref-for-xrsession-xr-device\u2460"},{"id":"ref-for-xrsession-xr-device\u2461"},{"id":"ref-for-xrsession-xr-device\u2462"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsession-xr-device"},
 "5a3f05c6": {"dfnID":"5a3f05c6","dfnText":"rounding","external":true,"refSections":[{"refs":[{"id":"ref-for-rounding"}],"title":"6. Privacy & Security Considerations"}],"url":"https://immersive-web.github.io/webxr/#rounding"},
 "5c4e891e": {"dfnID":"5c4e891e","dfnText":"session (for XRSpace)","external":true,"refSections":[{"refs":[{"id":"ref-for-xrspace-session"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrspace-session"},
 "5cce610d": {"dfnID":"5cce610d","dfnText":"DOMPointReadOnly","external":true,"refSections":[{"refs":[{"id":"ref-for-dompointreadonly"}],"title":"3.2. XRPlane"}],"url":"https://drafts.fxtf.org/geometry-1/#dompointreadonly"},
 "5f90bbfb": {"dfnID":"5f90bbfb","dfnText":"undefined","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-undefined"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#idl-undefined"},
-"797018a7": {"dfnID":"797018a7","dfnText":"InvalidStateError","external":true,"refSections":[{"refs":[{"id":"ref-for-invalidstateerror"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#invalidstateerror"},
-"7a030114": {"dfnID":"7a030114","dfnText":"XRFrame","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe"},{"id":"ref-for-xrframe\u2460"},{"id":"ref-for-xrframe\u2461"},{"id":"ref-for-xrframe\u2462"},{"id":"ref-for-xrframe\u2463"}],"title":"4.1. XRPlaneSet"},{"refs":[{"id":"ref-for-xrframe\u2464"}],"title":"5.1. Native plane detection"}],"url":"https://immersive-web.github.io/webxr/#xrframe"},
+"797018a7": {"dfnID":"797018a7","dfnText":"InvalidStateError","external":true,"refSections":[{"refs":[{"id":"ref-for-invalidstateerror"},{"id":"ref-for-invalidstateerror\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#invalidstateerror"},
 "7c7eccf9": {"dfnID":"7c7eccf9","dfnText":"session (for XRFrame)","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-xrframe-session"},{"id":"ref-for-dom-xrframe-session\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#dom-xrframe-session"},
 "7f1caef1": {"dfnID":"7f1caef1","dfnText":"list of frame updates","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-list-of-frame-updates"}],"title":"2.1. Feature descriptor"}],"url":"https://immersive-web.github.io/webxr/#xrsession-list-of-frame-updates"},
+"80757ed4": {"dfnID":"80757ed4","dfnText":"XRFrame","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe-interface"},{"id":"ref-for-xrframe-interface\u2460"},{"id":"ref-for-xrframe-interface\u2461"},{"id":"ref-for-xrframe-interface\u2462"},{"id":"ref-for-xrframe-interface\u2463"}],"title":"4.1. XRPlaneSet"},{"refs":[{"id":"ref-for-xrframe-interface\u2464"}],"title":"5.1. Native plane detection"}],"url":"https://immersive-web.github.io/webxr/#xrframe-interface"},
 "8385b9c7": {"dfnID":"8385b9c7","dfnText":"XRAnchor","external":true,"refSections":[{"refs":[{"id":"ref-for-xr-anchor"}],"title":"5.1. Native plane detection"}],"url":"https://immersive-web.github.io/anchors/#xr-anchor"},
 "8855a9aa": {"dfnID":"8855a9aa","dfnText":"DOMString","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-DOMString"}],"title":"3.2. XRPlane"}],"url":"https://webidl.spec.whatwg.org/#idl-DOMString"},
 "889e932f": {"dfnID":"889e932f","dfnText":"Exposed","external":true,"refSections":[{"refs":[{"id":"ref-for-Exposed"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-Exposed\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#Exposed"},
 "8af2159c": {"dfnID":"8af2159c","dfnText":"active","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe-active"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrframe-active"},
 "8f974556": {"dfnID":"8f974556","dfnText":"XRSystem","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsystem"},{"id":"ref-for-xrsystem\u2460"}],"title":"3.2. XRPlane"}],"url":"https://immersive-web.github.io/webxr/#xrsystem"},
+"994923d4": {"dfnID":"994923d4","dfnText":"XRSession","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-interface"},{"id":"ref-for-xrsession-interface\u2460"},{"id":"ref-for-xrsession-interface\u2461"},{"id":"ref-for-xrsession-interface\u2462"},{"id":"ref-for-xrsession-interface\u2463"},{"id":"ref-for-xrsession-interface\u2464"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsession-interface"},
 "a03d6806": {"dfnID":"a03d6806","dfnText":"native origin","external":true,"refSections":[{"refs":[{"id":"ref-for-xrspace-native-origin"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-xrspace-native-origin\u2460"}],"title":"4.1. XRPlaneSet"},{"refs":[{"id":"ref-for-xrspace-native-origin\u2461"}],"title":"5.1. Native plane detection"}],"url":"https://immersive-web.github.io/webxr/#xrspace-native-origin"},
+"a43bf215": {"dfnID":"a43bf215","dfnText":"list of enabled features","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-xrsession-enabledfeatures"},{"id":"ref-for-dom-xrsession-enabledfeatures\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures"},
 "a5c91173": {"dfnID":"a5c91173","dfnText":"SameObject","external":true,"refSections":[{"refs":[{"id":"ref-for-SameObject"}],"title":"3.2. XRPlane"}],"url":"https://webidl.spec.whatwg.org/#SameObject"},
+"a893a3e2": {"dfnID":"a893a3e2","dfnText":"XRSpace","external":true,"refSections":[{"refs":[{"id":"ref-for-xrspace-interface"},{"id":"ref-for-xrspace-interface\u2460"},{"id":"ref-for-xrspace-interface\u2461"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-xrspace-interface\u2462"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrspace-interface"},
 "a9d2b73a": {"dfnID":"a9d2b73a","dfnText":"getPose(space, baseSpace)","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-xrframe-getpose"}],"title":"3.2. XRPlane"}],"url":"https://immersive-web.github.io/webxr/#dom-xrframe-getpose"},
-"b23556e5": {"dfnID":"b23556e5","dfnText":"XRSession","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession"},{"id":"ref-for-xrsession\u2460"},{"id":"ref-for-xrsession\u2461"},{"id":"ref-for-xrsession\u2462"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsession"},
+"ae8def21": {"dfnID":"ae8def21","dfnText":"contain","external":true,"refSections":[{"refs":[{"id":"ref-for-list-contain"},{"id":"ref-for-list-contain\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://infra.spec.whatwg.org/#list-contain"},
+"b4cfa5ce": {"dfnID":"b4cfa5ce","dfnText":"throw","external":true,"refSections":[{"refs":[{"id":"ref-for-dfn-throw"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#dfn-throw"},
 "bdbd19d1": {"dfnID":"bdbd19d1","dfnText":"Promise","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-promise"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#idl-promise"},
 "c6a33477": {"dfnID":"c6a33477","dfnText":"time","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe-time"},{"id":"ref-for-xrframe-time\u2460"}],"title":"4.1. XRPlaneSet"},{"refs":[{"id":"ref-for-xrframe-time\u2461"}],"title":"5.1. Native plane detection"}],"url":"https://immersive-web.github.io/webxr/#xrframe-time"},
 "correspond-to": {"dfnID":"correspond-to","dfnText":"correspond to","external":false,"refSections":[{"refs":[{"id":"ref-for-correspond-to"}],"title":"4.1. XRPlaneSet"}],"url":"#correspond-to"},
@@ -1516,7 +1504,7 @@ let dfnPanelData = {
 "enumdef-xrplaneorientation": {"dfnID":"enumdef-xrplaneorientation","dfnText":"XRPlaneOrientation","external":false,"refSections":[{"refs":[{"id":"ref-for-enumdef-xrplaneorientation"}],"title":"3.2. XRPlane"}],"url":"#enumdef-xrplaneorientation"},
 "native-plane-detection": {"dfnID":"native-plane-detection","dfnText":"native plane detection","external":false,"refSections":[{"refs":[{"id":"ref-for-native-plane-detection"}],"title":"2.1. Feature descriptor"},{"refs":[{"id":"ref-for-native-plane-detection\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"#native-plane-detection"},
 "native-plane-objects": {"dfnID":"native-plane-objects","dfnText":"native plane objects","external":false,"refSections":[{"refs":[{"id":"ref-for-native-plane-objects"},{"id":"ref-for-native-plane-objects\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"#native-plane-objects"},
-"plane-detection": {"dfnID":"plane-detection","dfnText":"plane-detection","external":false,"refSections":[],"url":"#plane-detection"},
+"plane-detection": {"dfnID":"plane-detection","dfnText":"plane-detection","external":false,"refSections":[{"refs":[{"id":"ref-for-plane-detection"},{"id":"ref-for-plane-detection\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"#plane-detection"},
 "semantic-label": {"dfnID":"semantic-label","dfnText":"semantic label","external":false,"refSections":[{"refs":[{"id":"ref-for-semantic-label"},{"id":"ref-for-semantic-label\u2460"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-semantic-label\u2461"}],"title":"4.1. XRPlaneSet"}],"url":"#semantic-label"},
 "update-plane-object": {"dfnID":"update-plane-object","dfnText":"update plane object","external":false,"refSections":[{"refs":[{"id":"ref-for-update-plane-object"},{"id":"ref-for-update-plane-object\u2460"}],"title":"4.1. XRPlaneSet"},{"refs":[{"id":"ref-for-update-plane-object\u2461"}],"title":"6. Privacy & Security Considerations"}],"url":"#update-plane-object"},
 "update-planes": {"dfnID":"update-planes","dfnText":"update planes","external":false,"refSections":[{"refs":[{"id":"ref-for-update-planes"}],"title":"2.1. Feature descriptor"},{"refs":[{"id":"ref-for-update-planes\u2460"}],"title":"4.1. XRPlaneSet"},{"refs":[{"id":"ref-for-update-planes\u2461"}],"title":"6. Privacy & Security Considerations"}],"url":"#update-planes"},
@@ -1927,6 +1915,7 @@ let refsData = {
 "#enumdef-xrplaneorientation": {"displayText":"XRPlaneOrientation","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"XRPlaneOrientation","type":"enum","url":"#enumdef-xrplaneorientation"},
 "#native-plane-detection": {"displayText":"native plane detection","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"native plane detection","type":"dfn","url":"#native-plane-detection"},
 "#native-plane-objects": {"displayText":"native plane objects","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"native plane objects","type":"dfn","url":"#native-plane-objects"},
+"#plane-detection": {"displayText":"plane-detection","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"plane-detection","type":"dfn","url":"#plane-detection"},
 "#semantic-label": {"displayText":"semantic label","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"semantic label","type":"dfn","url":"#semantic-label"},
 "#update-plane-object": {"displayText":"update plane object","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"update plane object","type":"dfn","url":"#update-plane-object"},
 "#update-planes": {"displayText":"update planes","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"update planes","type":"dfn","url":"#update-planes"},
@@ -1941,28 +1930,33 @@ let refsData = {
 "https://immersive-web.github.io/webxr/#dom-xrframe-getpose": {"displayText":"getPose(space, baseSpace)","export":true,"for_":["XRFrame"],"level":"1","normative":true,"shortname":"webxr","spec":"webxr","status":"current","text":"getPose(space, baseSpace)","type":"method","url":"https://immersive-web.github.io/webxr/#dom-xrframe-getpose"},
 "https://immersive-web.github.io/webxr/#dom-xrframe-session": {"displayText":"session","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"session","type":"dfn","url":"https://immersive-web.github.io/webxr/#dom-xrframe-session"},
 "https://immersive-web.github.io/webxr/#dom-xrframe-session_https://immersive-web.github.io/webxr/#dom-xrframe-session": {"displayText":"session","export":true,"for_":["XRFrame"],"level":"1","normative":true,"shortname":"webxr","spec":"webxr","status":"current","text":"session","type":"attribute","url":"https://immersive-web.github.io/webxr/#dom-xrframe-session"},
+"https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures": {"displayText":"list of enabled features","export":true,"for_":["XR device"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"list of enabled features","type":"dfn","url":"https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures"},
 "https://immersive-web.github.io/webxr/#feature-descriptor": {"displayText":"feature descriptor","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"feature descriptor","type":"dfn","url":"https://immersive-web.github.io/webxr/#feature-descriptor"},
 "https://immersive-web.github.io/webxr/#inline-xr-device": {"displayText":"inline XR device","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"inline xr device","type":"dfn","url":"https://immersive-web.github.io/webxr/#inline-xr-device"},
 "https://immersive-web.github.io/webxr/#quantization": {"displayText":"quantization","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"quantization","type":"dfn","url":"https://immersive-web.github.io/webxr/#quantization"},
 "https://immersive-web.github.io/webxr/#rounding": {"displayText":"rounding","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"rounding","type":"dfn","url":"https://immersive-web.github.io/webxr/#rounding"},
-"https://immersive-web.github.io/webxr/#xrframe": {"displayText":"XRFrame","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr","spec":"webxr","status":"current","text":"XRFrame","type":"interface","url":"https://immersive-web.github.io/webxr/#xrframe"},
 "https://immersive-web.github.io/webxr/#xrframe-active": {"displayText":"active","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"active","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrframe-active"},
+"https://immersive-web.github.io/webxr/#xrframe-interface": {"displayText":"XRFrame","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"XRFrame","type":"interface","url":"https://immersive-web.github.io/webxr/#xrframe-interface"},
 "https://immersive-web.github.io/webxr/#xrframe-time": {"displayText":"time","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"time","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrframe-time"},
-"https://immersive-web.github.io/webxr/#xrsession": {"displayText":"XRSession","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr","spec":"webxr","status":"current","text":"XRSession","type":"interface","url":"https://immersive-web.github.io/webxr/#xrsession"},
+"https://immersive-web.github.io/webxr/#xrsession-interface": {"displayText":"XRSession","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"XRSession","type":"interface","url":"https://immersive-web.github.io/webxr/#xrsession-interface"},
 "https://immersive-web.github.io/webxr/#xrsession-list-of-frame-updates": {"displayText":"list of frame updates","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"list of frame updates","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrsession-list-of-frame-updates"},
+"https://immersive-web.github.io/webxr/#xrsession-mode": {"displayText":"mode","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"mode","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrsession-mode"},
 "https://immersive-web.github.io/webxr/#xrsession-xr-device": {"displayText":"XR device","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"xr device","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrsession-xr-device"},
-"https://immersive-web.github.io/webxr/#xrspace": {"displayText":"XRSpace","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr","spec":"webxr","status":"current","text":"XRSpace","type":"interface","url":"https://immersive-web.github.io/webxr/#xrspace"},
+"https://immersive-web.github.io/webxr/#xrspace-interface": {"displayText":"XRSpace","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"XRSpace","type":"interface","url":"https://immersive-web.github.io/webxr/#xrspace-interface"},
 "https://immersive-web.github.io/webxr/#xrspace-native-origin": {"displayText":"native origin","export":true,"for_":["XRSpace"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"native origin","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrspace-native-origin"},
 "https://immersive-web.github.io/webxr/#xrspace-session": {"displayText":"session","export":true,"for_":["XRSpace"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"session","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrspace-session"},
 "https://immersive-web.github.io/webxr/#xrsystem": {"displayText":"XRSystem","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr","spec":"webxr","status":"current","text":"XRSystem","type":"interface","url":"https://immersive-web.github.io/webxr/#xrsystem"},
+"https://infra.spec.whatwg.org/#list-contain": {"displayText":"contain","export":true,"for_":["list","stack","queue","set"],"level":"1","normative":true,"shortname":"infra","spec":"infra","status":"current","text":"contain","type":"dfn","url":"https://infra.spec.whatwg.org/#list-contain"},
 "https://w3c.github.io/hr-time/#dom-domhighrestimestamp": {"displayText":"DOMHighResTimeStamp","export":true,"for_":[],"level":"3","normative":true,"shortname":"hr-time","spec":"hr-time-3","status":"current","text":"DOMHighResTimeStamp","type":"typedef","url":"https://w3c.github.io/hr-time/#dom-domhighrestimestamp"},
 "https://webidl.spec.whatwg.org/#Exposed": {"displayText":"Exposed","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"Exposed","type":"extended-attribute","url":"https://webidl.spec.whatwg.org/#Exposed"},
 "https://webidl.spec.whatwg.org/#SameObject": {"displayText":"SameObject","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"SameObject","type":"extended-attribute","url":"https://webidl.spec.whatwg.org/#SameObject"},
+"https://webidl.spec.whatwg.org/#dfn-throw": {"displayText":"throw","export":true,"for_":["exception"],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"throw","type":"dfn","url":"https://webidl.spec.whatwg.org/#dfn-throw"},
 "https://webidl.spec.whatwg.org/#idl-DOMString": {"displayText":"DOMString","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"DOMString","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-DOMString"},
 "https://webidl.spec.whatwg.org/#idl-frozen-array": {"displayText":"FrozenArray","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"FrozenArray","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-frozen-array"},
 "https://webidl.spec.whatwg.org/#idl-promise": {"displayText":"Promise","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"Promise","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-promise"},
 "https://webidl.spec.whatwg.org/#idl-undefined": {"displayText":"undefined","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"undefined","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-undefined"},
 "https://webidl.spec.whatwg.org/#invalidstateerror": {"displayText":"InvalidStateError","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"InvalidStateError","type":"exception","url":"https://webidl.spec.whatwg.org/#invalidstateerror"},
+"https://webidl.spec.whatwg.org/#notsupportederror": {"displayText":"NotSupportedError","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"NotSupportedError","type":"exception","url":"https://webidl.spec.whatwg.org/#notsupportederror"},
 };
 
 function mkRefHint(link, ref) {
