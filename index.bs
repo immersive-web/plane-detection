@@ -23,7 +23,7 @@ Abstract: Plane Detection is a module extending the capabilities of the WebXR De
 </pre>
 
 <pre class="anchors">
-spec: WebXR Device API - Level 1; urlPrefix: https://immersive-web.github.io/webxr/#
+spec: webxr; urlPrefix: https://immersive-web.github.io/webxr/#
     type: dfn; text: capable of supporting; url: capable-of-supporting
     type: dfn; text: feature descriptor; url: feature-descriptor
     type: dfn; text: identity transform; url: identity-transform
@@ -37,6 +37,7 @@ spec: WebXR Device API - Level 1; urlPrefix: https://immersive-web.github.io/web
         type: dfn; text: time; url: xrframe-time
     type: interface; text: XRSession; url: xrsession-interface
     for: XRSession;
+        type: attribute; text: ended; url: xrsession-ended
         type: dfn; text: list of frame updates; url: xrsession-list-of-frame-updates
         type: dfn; text: mode; url: xrsession-mode
         type: dfn; text: XR device; url: xrsession-xr-device
@@ -218,11 +219,40 @@ partial interface XRSession {
 };
 </script>
 
-{{XRSession}} is extended to contain the {{XRSession/initiateRoomCapture}} method which, if supported, will ask the [=XRSession/XR device=] to capture the current room layout. It is up to the [=XRSession/XR device=] if this will replace or augment the [=XRSession/set of tracked planes=]. The user agent MAY also ignore this call, for instance if it doesn't support a manual room capture more or if it determines that the room is already set up.
-If the {{XRSession/initiateRoomCapture}} method is called more than once for a given {{XRSession}}, the user agent MUST throw {{InvalidStateError}}.
-If [=plane-detection=] feature descriptor is not [=list/contain|contained=] in the {{XRSession}}'s [=XRSession/XR device=]'s [=XR device/list of enabled features=] for the {{XRSession}}'s [=XRSession/mode=], [=exception/throw=] a {{NotSupportedError}}.
+{{XRSession}} is extended to contain associated <dfn for=XRSession>set of tracked planes</dfn>, which is initially empty. The elements of the set will be of {{XRPlane}} type.
 
-{{XRSession}} is also extended to contain associated <dfn for=XRSession>set of tracked planes</dfn>, which is initially empty. The elements of the set will be of {{XRPlane}} type.
+{{XRSession}} is extended to contain a boolean <dfn for=XRSession>room capture completed</dfn>, which is initially false.
+
+If [=XRSession/XR device=] supports manual capture, it has an async <dfn for="XR device">room capture method</dfn> which returns a boolean.
+
+{{XRSession}} is also extended to contain the {{XRSession/initiateRoomCapture}} method which, if supported, will ask the [=XRSession/XR device=] to capture the current room layout. It is up to the [=XRSession/XR device=] if this will replace or augment the [=XRSession/set of tracked planes=].
+
+<div class="algorithm" data-algorithm="initiate-room-capture">
+When this method is invoked, the user agent MUST run the following steps:
+  1. Let |session| be [=this=]
+  1. Let |promise| be [=a new Promise=] in the [=relevant realm=] of |session|.
+  1. If the {{XRSession/ended}} value of |session| is `true`, [=reject=] |promise| with a "{{InvalidStateError}}" {{DOMException}} and return |promise|.
+  1. If [=XRSession/room capture completed=] is `true`, [=reject=] |promise| with a "{{InvalidStateError}}" {{DOMException}} and return |promise|.
+  1. If [=plane-detection=] feature descriptor is not [=list/contain|contained=] in |session|'s [=XRSession/XR device=]'s [=XR device/list of enabled features=] for |session|'s [=XRSession/mode=], [=reject=] |promise| with a "{{NotSupportedError}}" {{DOMException}} and return |promise|.
+  1. If the |session|'s [=XRSession/XR device=] doesn't support manual capture or if the room is already set up, run the following steps:
+    1. Set |session|'s [=XRSession/room capture completed=] to `true`.
+    1. [=/Resolve=] |promise|.
+    1. Return |promise|.
+  1. [=Queue a task=] to perform the following steps:
+    1. Invoke and wait for the result of |session|'s [=XRSession/XR device=]'s [=XR device/room capture method=], which is assigned to |result|.
+    1. Run the following steps:
+        <dl class="switch">
+              : If |result| is `true`:
+              :: [=/Resolve=] |promise|
+
+              : Otherwise:
+              :: [=reject=] |promise| with an "{{OperationError}}" {{DOMException}}
+
+        </dl>
+    1. Set |session|'s [=XRSession/room capture completed=] to `true`.
+  1. Return |promise|.
+
+</div>
 
 <div class="algorithm" data-algorithm="update-planes">
 In order to <dfn>update planes</dfn> for |frame|, the user agent MUST run the following steps:
