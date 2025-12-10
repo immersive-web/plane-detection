@@ -234,7 +234,7 @@ When this method is invoked, the user agent MUST run the following steps:
   1. If the {{XRSession/ended}} value of |session| is `true`, [=reject=] |promise| with a "{{InvalidStateError}}" {{DOMException}} and return |promise|.
   1. If [=XRSession/room capture completed=] is `true`, [=reject=] |promise| with a "{{InvalidStateError}}" {{DOMException}} and return |promise|.
   1. If [=plane-detection=] feature descriptor is not [=list/contain|contained=] in |session|'s [=XRSession/XR device=]'s [=XR device/list of enabled features=] for |session|'s [=XRSession/mode=], [=reject=] |promise| with a "{{NotSupportedError}}" {{DOMException}} and return |promise|.
-  1. If the |session|'s [=XRSession/XR device=] doesn't support manual capture or if the room is already set up, run the following steps:
+  1. If the |session|'s [=XRSession/XR device=] doesn't support manual capture or if the {{XRSystem}} determines that room capture isn't needed:
     1. Set |session|'s [=XRSession/room capture completed=] to `true`.
     1. [=/Resolve=] |promise|.
     1. Return |promise|.
