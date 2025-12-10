@@ -5,7 +5,7 @@
   <title>WebXR Plane Detection Module</title>
   <meta content="CG-DRAFT" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" rel="stylesheet">
-  <meta content="Bikeshed version 3c53a5b02, updated Thu Nov 27 17:03:30 2025 +0000" name="generator">
+  <meta content="Bikeshed version fd9c5ce66, updated Mon Dec 8 22:43:21 2025 +0000" name="generator">
   <link href="https://immersive-web.github.io/plane-detection/" rel="canonical">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="dark light" name="color-scheme">
@@ -780,7 +780,7 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
 </p>
    <h1 class="no-ref p-name" id="title">WebXR Plane Detection Module</h1>
    <p id="w3c-state"><a href="https://www.w3.org/standards/types/#CG-DRAFT">Draft Community Group Report</a>,
-    <time class="dt-updated" datetime="2025-12-04">4 December 2025</time></p>
+    <time class="dt-updated" datetime="2025-12-10">10 December 2025</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -932,10 +932,57 @@ The list of semantic labels is defined in the <a href="https://github.com/immers
   <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise"><c- b>Promise</c-></a>&lt;<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-undefined" id="ref-for-idl-undefined"><c- b>undefined</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRSession" data-dfn-type="method" data-export data-lt="initiateRoomCapture()" id="dom-xrsession-initiateroomcapture"><code><c- g>initiateRoomCapture</c-></code></dfn>();
 };
 </pre>
-   <p><code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface①">XRSession</a></code> is extended to contain the <code class="idl"><a data-link-type="idl" href="#dom-xrsession-initiateroomcapture" id="ref-for-dom-xrsession-initiateroomcapture">initiateRoomCapture</a></code> method which, if supported, will ask the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device">XR device</a> to capture the current room layout. It is up to the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device①">XR device</a> if this will replace or augment the <a data-link-type="dfn" href="#xrsession-set-of-tracked-planes" id="ref-for-xrsession-set-of-tracked-planes">set of tracked planes</a>. The user agent MAY also ignore this call, for instance if it doesn’t support a manual room capture more or if it determines that the room is already set up.
-If the <code class="idl"><a data-link-type="idl" href="#dom-xrsession-initiateroomcapture" id="ref-for-dom-xrsession-initiateroomcapture①">initiateRoomCapture</a></code> method is called more than once for a given <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface②">XRSession</a></code>, the user agent MUST throw <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror①">InvalidStateError</a></code>.
-If <a data-link-type="dfn" href="#plane-detection" id="ref-for-plane-detection">plane-detection</a> feature descriptor is not <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-contain" id="ref-for-list-contain">contained</a> in the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface③">XRSession</a></code>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device②">XR device</a>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures" id="ref-for-dom-xrsession-enabledfeatures">list of enabled features</a> for the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface④">XRSession</a></code>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-mode" id="ref-for-xrsession-mode">mode</a>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw" id="ref-for-dfn-throw">throw</a> a <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#notsupportederror" id="ref-for-notsupportederror">NotSupportedError</a></code>.</p>
-   <p><code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface⑤">XRSession</a></code> is also extended to contain associated <dfn class="dfn-paneled" data-dfn-for="XRSession" data-dfn-type="dfn" data-noexport id="xrsession-set-of-tracked-planes">set of tracked planes</dfn>, which is initially empty. The elements of the set will be of <code class="idl"><a data-link-type="idl" href="#xrplane" id="ref-for-xrplane⑥">XRPlane</a></code> type.</p>
+   <p><code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface①">XRSession</a></code> is extended to contain associated <dfn class="dfn-paneled" data-dfn-for="XRSession" data-dfn-type="dfn" data-noexport id="xrsession-set-of-tracked-planes">set of tracked planes</dfn>, which is initially empty. The elements of the set will be of <code class="idl"><a data-link-type="idl" href="#xrplane" id="ref-for-xrplane⑥">XRPlane</a></code> type.</p>
+   <p><code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface②">XRSession</a></code> is extended to contain a boolean <dfn class="dfn-paneled" data-dfn-for="XRSession" data-dfn-type="dfn" data-noexport id="xrsession-room-capture-completed">room capture completed</dfn>, which is initially false.</p>
+   <p>If <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device">XR device</a> supports manual capture, it has an async <dfn class="dfn-paneled" data-dfn-for="XR device" data-dfn-type="dfn" data-noexport id="xr-device-room-capture-method">room capture method</dfn> which returns a boolean.</p>
+   <p><code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-interface" id="ref-for-xrsession-interface③">XRSession</a></code> is also extended to contain the <code class="idl"><a data-link-type="idl" href="#dom-xrsession-initiateroomcapture" id="ref-for-dom-xrsession-initiateroomcapture">initiateRoomCapture</a></code> method which, if supported, will ask the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device①">XR device</a> to capture the current room layout. It is up to the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device②">XR device</a> if this will replace or augment the <a data-link-type="dfn" href="#xrsession-set-of-tracked-planes" id="ref-for-xrsession-set-of-tracked-planes">set of tracked planes</a>.</p>
+   <div class="algorithm" data-algorithm="initiate-room-capture">
+    
+When this method is invoked, the user agent MUST run the following steps:
+
+    <ol>
+     <li data-md>
+      <p>Let <var>session</var> be <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this">this</a></p>
+     <li data-md>
+      <p>Let <var>promise</var> be <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#a-new-promise" id="ref-for-a-new-promise">a new Promise</a> in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm" id="ref-for-concept-relevant-realm">relevant realm</a> of <var>session</var>.</p>
+     <li data-md>
+      <p>If the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession-ended" id="ref-for-xrsession-ended">ended</a></code> value of <var>session</var> is `true`, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject">reject</a> <var>promise</var> with a "<code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror①">InvalidStateError</a></code>" <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#idl-DOMException" id="ref-for-idl-DOMException">DOMException</a></code> and return <var>promise</var>.</p>
+     <li data-md>
+      <p>If <a data-link-type="dfn" href="#xrsession-room-capture-completed" id="ref-for-xrsession-room-capture-completed">room capture completed</a> is `true`, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject①">reject</a> <var>promise</var> with a "<code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror②">InvalidStateError</a></code>" <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#idl-DOMException" id="ref-for-idl-DOMException①">DOMException</a></code> and return <var>promise</var>.</p>
+     <li data-md>
+      <p>If <a data-link-type="dfn" href="#plane-detection" id="ref-for-plane-detection">plane-detection</a> feature descriptor is not <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-contain" id="ref-for-list-contain">contained</a> in <var>session</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device③">XR device</a>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures" id="ref-for-dom-xrsession-enabledfeatures">list of enabled features</a> for <var>session</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-mode" id="ref-for-xrsession-mode">mode</a>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject②">reject</a> <var>promise</var> with a "<code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#notsupportederror" id="ref-for-notsupportederror">NotSupportedError</a></code>" <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#idl-DOMException" id="ref-for-idl-DOMException②">DOMException</a></code> and return <var>promise</var>.</p>
+     <li data-md>
+      <p>If the <var>session</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device④">XR device</a> doesn’t support manual capture or if the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem②">XRSystem</a></code> determines that room capture isn’t needed:</p>
+      <ol>
+       <li data-md>
+        <p>Set <var>session</var>’s <a data-link-type="dfn" href="#xrsession-room-capture-completed" id="ref-for-xrsession-room-capture-completed①">room capture completed</a> to `true`.</p>
+       <li data-md>
+        <p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#resolve" id="ref-for-resolve">Resolve</a> <var>promise</var>.</p>
+       <li data-md>
+        <p>Return <var>promise</var>.</p>
+      </ol>
+     <li data-md>
+      <p><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task">Queue a task</a> to perform the following steps:</p>
+      <ol>
+       <li data-md>
+        <p>Invoke and wait for the result of <var>session</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device⑤">XR device</a>’s <a data-link-type="dfn" href="#xr-device-room-capture-method" id="ref-for-xr-device-room-capture-method">room capture method</a>, which is assigned to <var>result</var>.</p>
+       <li data-md>
+        <p>Run the following steps:</p>
+        <dl class="switch">
+         <dt data-md>If <var>result</var> is `true`:
+         <dd data-md>
+          <p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#resolve" id="ref-for-resolve①">Resolve</a> <var>promise</var></p>
+         <dt data-md>Otherwise:
+         <dd data-md>
+          <p><a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject③">reject</a> <var>promise</var> with an "<code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#operationerror" id="ref-for-operationerror">OperationError</a></code>" <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#idl-DOMException" id="ref-for-idl-DOMException③">DOMException</a></code></p>
+        </dl>
+       <li data-md>
+        <p>Set <var>session</var>’s <a data-link-type="dfn" href="#xrsession-room-capture-completed" id="ref-for-xrsession-room-capture-completed②">room capture completed</a> to `true`.</p>
+      </ol>
+     <li data-md>
+      <p>Return <var>promise</var>.</p>
+    </ol>
+   </div>
    <div class="algorithm" data-algorithm="update-planes">
     
 In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="update-planes">update planes</dfn> for <var>frame</var>, the user agent MUST run the following steps:
@@ -944,7 +991,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
      <li data-md>
       <p>Let <var>session</var> be a <var>frame</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session">session</a>.</p>
      <li data-md>
-      <p>Let <var>device</var> be a <var>session</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device③">XR device</a>.</p>
+      <p>Let <var>device</var> be a <var>session</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device⑥">XR device</a>.</p>
      <li data-md>
       <p>If <a data-link-type="dfn" href="#plane-detection" id="ref-for-plane-detection①">plane-detection</a> feature descriptor is not <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-contain" id="ref-for-list-contain①">contained</a> in <var>device</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures" id="ref-for-dom-xrsession-enabledfeatures①">list of enabled features</a> for <var>session</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-mode" id="ref-for-xrsession-mode①">mode</a>, abort these steps.</p>
      <li data-md>
@@ -1004,8 +1051,8 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
       <p>Set <var>plane</var>’s <code class="idl"><a data-link-type="idl" href="#dom-xrplane-lastchangedtime" id="ref-for-dom-xrplane-lastchangedtime②">lastChangedTime</a></code> to <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrframe-time" id="ref-for-xrframe-time①">time</a>.</p>
     </ol>
    </div>
-   <div class="example" id="example-5ff73e1a">
-    <a class="self-link" href="#example-5ff73e1a"></a>
+   <div class="example" id="example-f834c470">
+    <a class="self-link" href="#example-f834c470"></a>
 
 
     <p>The following example demonstrates how an application could obtain information about detected planes and act on it. The code that can be used to render a graphical representation of the planes is not shown.</p>
@@ -1016,7 +1063,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
 <c- a>function</c-> onXRFrame<c- p>(</c->timestamp<c- p>,</c-> frame<c- p>)</c-> <c- p>{</c->
   <c- a>const</c-> detectedPlanes <c- o>=</c-> frame<c- p>.</c->detectedPlanes<c- p>;</c->
 
-  <c- c1>// First, let’s check if any of the planes we knew about is no longer tracked:</c->
+  <c- c1>// First, let's check if any of the planes we knew about is no longer tracked:</c->
   <c- k>for</c-> <c- p>(</c-><c- a>const</c-> <c- p>[</c->plane<c- p>,</c-> timestamp<c- p>]</c-> <c- k>of</c-> planes<c- p>)</c-> <c- p>{</c->
     <c- k>if</c-><c- p>(</c-><c- o>!</c->detectedPlanes<c- p>.</c->has<c- p>(</c->plane<c- p>))</c-> <c- p>{</c->
       <c- c1>// Handle removed plane - `plane` was present in previous frame,</c->
@@ -1027,7 +1074,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
     <c- p>}</c->
   <c- p>}</c->
 
-  <c- c1>// Then, let’s handle all the planes that are still tracked.</c->
+  <c- c1>// Then, let's handle all the planes that are still tracked.</c->
   <c- c1>// This consists both of tracked planes that we have previously seen (may have</c->
   <c- c1>// been updated), and new planes.</c->
   detectedPlanes<c- p>.</c->forEach<c- p>(</c->plane <c- p>=></c-> <c- p>{</c->
@@ -1036,7 +1083,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
 
       <c- k>if</c-><c- p>(</c->plane<c- p>.</c->lastChangedTime <c- o>></c-> planes<c- p>.</c->get<c- p>(</c->plane<c- p>))</c-> <c- p>{</c->
         <c- c1>// Handle previously seen plane that was updated.</c->
-        <c- c1>// It means that one of the plane’s properties is different than</c->
+        <c- c1>// It means that one of the plane's properties is different than</c->
         <c- c1>// it used to be - most likely, the polygon has changed.</c->
 
         <c- p>...</c-> <c- c1>// Render / prepare the plane for rendering, etc.</c->
@@ -1045,7 +1092,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
         planes<c- p>.</c->set<c- p>(</c->plane<c- p>,</c-> plane<c- p>.</c->lastChangedTime<c- p>);</c->
       <c- p>}</c-> <c- k>else</c-> <c- p>{</c->
         <c- c1>// Handle previously seen plane that was not updated in current frame.</c->
-        <c- c1>// Note that plane’s pose relative to some other space MAY have changed.</c->
+        <c- c1>// Note that plane's pose relative to some other space MAY have changed.</c->
       <c- p>}</c->
     <c- p>}</c-> <c- k>else</c-> <c- p>{</c->
       <c- c1>// Handle new plane.</c->
@@ -1134,6 +1181,8 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
    <li><a href="#plane-detection">plane-detection</a><span>, in § 2.1</span>
    <li><a href="#dom-xrplane-planespace">planeSpace</a><span>, in § 3.2</span>
    <li><a href="#dom-xrplane-polygon">polygon</a><span>, in § 3.2</span>
+   <li><a href="#xrsession-room-capture-completed">room capture completed</a><span>, in § 4.1</span>
+   <li><a href="#xr-device-room-capture-method">room capture method</a><span>, in § 4.1</span>
    <li><a href="#semantic-label">semantic label</a><span>, in § 3.2</span>
    <li><a href="#dom-xrplane-semanticlabel">semanticLabel</a><span>, in § 3.2</span>
    <li><a href="#xrsession-set-of-tracked-planes">set of tracked planes</a><span>, in § 4.1</span>
@@ -1157,6 +1206,12 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
      <li><span class="dfn-paneled" id="0e9f636b">DOMHighResTimeStamp</span>
     </ul>
    <li>
+    <a data-link-type="biblio">[HTML]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="9a517a7d">queue a task</span>
+     <li><span class="dfn-paneled" id="5991ccfb">relevant realm</span>
+    </ul>
+   <li>
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="ae8def21">contain</span>
@@ -1164,37 +1219,33 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
    <li>
     <a data-link-type="biblio">[WEBIDL]</a> defines the following terms:
     <ul>
+     <li><span class="dfn-paneled" id="dca2de17">DOMException</span>
      <li><span class="dfn-paneled" id="8855a9aa">DOMString</span>
      <li><span class="dfn-paneled" id="889e932f">Exposed</span>
      <li><span class="dfn-paneled" id="dcf5fafa">FrozenArray</span>
      <li><span class="dfn-paneled" id="797018a7">InvalidStateError</span>
      <li><span class="dfn-paneled" id="3182eb71">NotSupportedError</span>
+     <li><span class="dfn-paneled" id="34443090">OperationError</span>
      <li><span class="dfn-paneled" id="bdbd19d1">Promise</span>
      <li><span class="dfn-paneled" id="a5c91173">SameObject</span>
-     <li><span class="dfn-paneled" id="b4cfa5ce">throw</span>
+     <li><span class="dfn-paneled" id="dacde8b5">a new promise</span>
+     <li><span class="dfn-paneled" id="b262501e">reject</span>
+     <li><span class="dfn-paneled" id="3b90bdcd">resolve</span>
+     <li><span class="dfn-paneled" id="4013a022">this</span>
      <li><span class="dfn-paneled" id="5f90bbfb">undefined</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBXR]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="8f974556">XRSystem</span>
-     <li><span class="dfn-paneled" id="a9d2b73a">getPose(space, baseSpace)</span>
-     <li><span class="dfn-paneled" id="7c7eccf9">session</span>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[WEBXR ANCHORS MODULE]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="8385b9c7">XRAnchor</span>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[WEBXR DEVICE API - LEVEL 1]</a> defines the following terms:
-    <ul>
      <li><span class="dfn-paneled" id="80757ed4">XRFrame</span>
      <li><span class="dfn-paneled" id="994923d4">XRSession</span>
      <li><span class="dfn-paneled" id="a893a3e2">XRSpace</span>
+     <li><span class="dfn-paneled" id="8f974556">XRSystem</span>
      <li><span class="dfn-paneled" id="8af2159c">active</span>
      <li><span class="dfn-paneled" id="d6345ec4">capable of supporting</span>
+     <li><span class="dfn-paneled" id="ca22f924">ended</span>
      <li><span class="dfn-paneled" id="348f253b">feature descriptor</span>
+     <li><span class="dfn-paneled" id="a9d2b73a">getPose(space, baseSpace)</span>
      <li><span class="dfn-paneled" id="3f381e58">inline XR device</span>
      <li><span class="dfn-paneled" id="a43bf215">list of enabled features</span>
      <li><span class="dfn-paneled" id="7f1caef1">list of frame updates</span>
@@ -1202,10 +1253,15 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
      <li><span class="dfn-paneled" id="a03d6806">native origin</span>
      <li><span class="dfn-paneled" id="1776cb35">quantization</span>
      <li><span class="dfn-paneled" id="5a3f05c6">rounding</span>
-     <li><span class="dfn-paneled" id="7c7eccf9①">session <small>(for XRFrame)</small></span>
+     <li><span class="dfn-paneled" id="7c7eccf9">session <small>(for XRFrame)</small></span>
      <li><span class="dfn-paneled" id="5c4e891e">session <small>(for XRSpace)</small></span>
      <li><span class="dfn-paneled" id="c6a33477">time</span>
      <li><span class="dfn-paneled" id="4da8c16e">XR device</span>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[WEBXR ANCHORS MODULE]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="8385b9c7">XRAnchor</span>
     </ul>
   </ul>
   <h2 class="heading no-num no-ref settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
@@ -1215,6 +1271,8 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
    <dd>Simon Pieters; Chris Harrelson. <a href="https://drafts.fxtf.org/geometry/"><cite>Geometry Interfaces Module Level 1</cite></a>. URL: <a href="https://drafts.fxtf.org/geometry/">https://drafts.fxtf.org/geometry/</a>
    <dt id="biblio-hr-time-3">[HR-TIME-3]
    <dd>Yoav Weiss. <a href="https://w3c.github.io/hr-time/"><cite>High Resolution Time</cite></a>. URL: <a href="https://w3c.github.io/hr-time/">https://w3c.github.io/hr-time/</a>
+   <dt id="biblio-html">[HTML]
+   <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-infra">[INFRA]
    <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
    <dt id="biblio-rfc2119">[RFC2119]
@@ -1462,15 +1520,19 @@ let dfnPanelData = {
 "0e9f636b": {"dfnID":"0e9f636b","dfnText":"DOMHighResTimeStamp","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-domhighrestimestamp"}],"title":"3.2. XRPlane"}],"url":"https://w3c.github.io/hr-time/#dom-domhighrestimestamp"},
 "1776cb35": {"dfnID":"1776cb35","dfnText":"quantization","external":true,"refSections":[{"refs":[{"id":"ref-for-quantization"},{"id":"ref-for-quantization\u2460"}],"title":"6. Privacy & Security Considerations"}],"url":"https://immersive-web.github.io/webxr/#quantization"},
 "3182eb71": {"dfnID":"3182eb71","dfnText":"NotSupportedError","external":true,"refSections":[{"refs":[{"id":"ref-for-notsupportederror"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#notsupportederror"},
+"34443090": {"dfnID":"34443090","dfnText":"OperationError","external":true,"refSections":[{"refs":[{"id":"ref-for-operationerror"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#operationerror"},
 "348f253b": {"dfnID":"348f253b","dfnText":"feature descriptor","external":true,"refSections":[{"refs":[{"id":"ref-for-feature-descriptor"}],"title":"2.1. Feature descriptor"}],"url":"https://immersive-web.github.io/webxr/#feature-descriptor"},
+"3b90bdcd": {"dfnID":"3b90bdcd","dfnText":"resolve","external":true,"refSections":[{"refs":[{"id":"ref-for-resolve"},{"id":"ref-for-resolve\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#resolve"},
 "3f381e58": {"dfnID":"3f381e58","dfnText":"inline XR device","external":true,"refSections":[{"refs":[{"id":"ref-for-inline-xr-device"}],"title":"2.1. Feature descriptor"}],"url":"https://immersive-web.github.io/webxr/#inline-xr-device"},
+"4013a022": {"dfnID":"4013a022","dfnText":"this","external":true,"refSections":[{"refs":[{"id":"ref-for-this"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#this"},
 "4205ec1d": {"dfnID":"4205ec1d","dfnText":"mode","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-mode"},{"id":"ref-for-xrsession-mode\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsession-mode"},
-"4da8c16e": {"dfnID":"4da8c16e","dfnText":"XR device","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-xr-device"},{"id":"ref-for-xrsession-xr-device\u2460"},{"id":"ref-for-xrsession-xr-device\u2461"},{"id":"ref-for-xrsession-xr-device\u2462"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsession-xr-device"},
+"4da8c16e": {"dfnID":"4da8c16e","dfnText":"XR device","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-xr-device"},{"id":"ref-for-xrsession-xr-device\u2460"},{"id":"ref-for-xrsession-xr-device\u2461"},{"id":"ref-for-xrsession-xr-device\u2462"},{"id":"ref-for-xrsession-xr-device\u2463"},{"id":"ref-for-xrsession-xr-device\u2464"},{"id":"ref-for-xrsession-xr-device\u2465"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsession-xr-device"},
+"5991ccfb": {"dfnID":"5991ccfb","dfnText":"relevant realm","external":true,"refSections":[{"refs":[{"id":"ref-for-concept-relevant-realm"}],"title":"4.1. XRPlaneSet"}],"url":"https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm"},
 "5a3f05c6": {"dfnID":"5a3f05c6","dfnText":"rounding","external":true,"refSections":[{"refs":[{"id":"ref-for-rounding"}],"title":"6. Privacy & Security Considerations"}],"url":"https://immersive-web.github.io/webxr/#rounding"},
 "5c4e891e": {"dfnID":"5c4e891e","dfnText":"session (for XRSpace)","external":true,"refSections":[{"refs":[{"id":"ref-for-xrspace-session"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrspace-session"},
 "5cce610d": {"dfnID":"5cce610d","dfnText":"DOMPointReadOnly","external":true,"refSections":[{"refs":[{"id":"ref-for-dompointreadonly"}],"title":"3.2. XRPlane"}],"url":"https://drafts.fxtf.org/geometry-1/#dompointreadonly"},
 "5f90bbfb": {"dfnID":"5f90bbfb","dfnText":"undefined","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-undefined"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#idl-undefined"},
-"797018a7": {"dfnID":"797018a7","dfnText":"InvalidStateError","external":true,"refSections":[{"refs":[{"id":"ref-for-invalidstateerror"},{"id":"ref-for-invalidstateerror\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#invalidstateerror"},
+"797018a7": {"dfnID":"797018a7","dfnText":"InvalidStateError","external":true,"refSections":[{"refs":[{"id":"ref-for-invalidstateerror"},{"id":"ref-for-invalidstateerror\u2460"},{"id":"ref-for-invalidstateerror\u2461"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#invalidstateerror"},
 "7c7eccf9": {"dfnID":"7c7eccf9","dfnText":"session (for XRFrame)","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-xrframe-session"},{"id":"ref-for-dom-xrframe-session\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#dom-xrframe-session"},
 "7f1caef1": {"dfnID":"7f1caef1","dfnText":"list of frame updates","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-list-of-frame-updates"}],"title":"2.1. Feature descriptor"}],"url":"https://immersive-web.github.io/webxr/#xrsession-list-of-frame-updates"},
 "80757ed4": {"dfnID":"80757ed4","dfnText":"XRFrame","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe-interface"},{"id":"ref-for-xrframe-interface\u2460"},{"id":"ref-for-xrframe-interface\u2461"},{"id":"ref-for-xrframe-interface\u2462"},{"id":"ref-for-xrframe-interface\u2463"}],"title":"4.1. XRPlaneSet"},{"refs":[{"id":"ref-for-xrframe-interface\u2464"}],"title":"5.1. Native plane detection"}],"url":"https://immersive-web.github.io/webxr/#xrframe-interface"},
@@ -1478,20 +1540,24 @@ let dfnPanelData = {
 "8855a9aa": {"dfnID":"8855a9aa","dfnText":"DOMString","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-DOMString"}],"title":"3.2. XRPlane"}],"url":"https://webidl.spec.whatwg.org/#idl-DOMString"},
 "889e932f": {"dfnID":"889e932f","dfnText":"Exposed","external":true,"refSections":[{"refs":[{"id":"ref-for-Exposed"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-Exposed\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#Exposed"},
 "8af2159c": {"dfnID":"8af2159c","dfnText":"active","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe-active"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrframe-active"},
-"8f974556": {"dfnID":"8f974556","dfnText":"XRSystem","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsystem"},{"id":"ref-for-xrsystem\u2460"}],"title":"3.2. XRPlane"}],"url":"https://immersive-web.github.io/webxr/#xrsystem"},
-"994923d4": {"dfnID":"994923d4","dfnText":"XRSession","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-interface"},{"id":"ref-for-xrsession-interface\u2460"},{"id":"ref-for-xrsession-interface\u2461"},{"id":"ref-for-xrsession-interface\u2462"},{"id":"ref-for-xrsession-interface\u2463"},{"id":"ref-for-xrsession-interface\u2464"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsession-interface"},
+"8f974556": {"dfnID":"8f974556","dfnText":"XRSystem","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsystem"},{"id":"ref-for-xrsystem\u2460"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-xrsystem\u2461"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsystem"},
+"994923d4": {"dfnID":"994923d4","dfnText":"XRSession","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-interface"},{"id":"ref-for-xrsession-interface\u2460"},{"id":"ref-for-xrsession-interface\u2461"},{"id":"ref-for-xrsession-interface\u2462"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsession-interface"},
+"9a517a7d": {"dfnID":"9a517a7d","dfnText":"queue a task","external":true,"refSections":[{"refs":[{"id":"ref-for-queue-a-task"}],"title":"4.1. XRPlaneSet"}],"url":"https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task"},
 "a03d6806": {"dfnID":"a03d6806","dfnText":"native origin","external":true,"refSections":[{"refs":[{"id":"ref-for-xrspace-native-origin"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-xrspace-native-origin\u2460"}],"title":"4.1. XRPlaneSet"},{"refs":[{"id":"ref-for-xrspace-native-origin\u2461"}],"title":"5.1. Native plane detection"}],"url":"https://immersive-web.github.io/webxr/#xrspace-native-origin"},
 "a43bf215": {"dfnID":"a43bf215","dfnText":"list of enabled features","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-xrsession-enabledfeatures"},{"id":"ref-for-dom-xrsession-enabledfeatures\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures"},
 "a5c91173": {"dfnID":"a5c91173","dfnText":"SameObject","external":true,"refSections":[{"refs":[{"id":"ref-for-SameObject"}],"title":"3.2. XRPlane"}],"url":"https://webidl.spec.whatwg.org/#SameObject"},
 "a893a3e2": {"dfnID":"a893a3e2","dfnText":"XRSpace","external":true,"refSections":[{"refs":[{"id":"ref-for-xrspace-interface"},{"id":"ref-for-xrspace-interface\u2460"},{"id":"ref-for-xrspace-interface\u2461"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-xrspace-interface\u2462"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrspace-interface"},
 "a9d2b73a": {"dfnID":"a9d2b73a","dfnText":"getPose(space, baseSpace)","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-xrframe-getpose"}],"title":"3.2. XRPlane"}],"url":"https://immersive-web.github.io/webxr/#dom-xrframe-getpose"},
 "ae8def21": {"dfnID":"ae8def21","dfnText":"contain","external":true,"refSections":[{"refs":[{"id":"ref-for-list-contain"},{"id":"ref-for-list-contain\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"https://infra.spec.whatwg.org/#list-contain"},
-"b4cfa5ce": {"dfnID":"b4cfa5ce","dfnText":"throw","external":true,"refSections":[{"refs":[{"id":"ref-for-dfn-throw"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#dfn-throw"},
+"b262501e": {"dfnID":"b262501e","dfnText":"reject","external":true,"refSections":[{"refs":[{"id":"ref-for-reject"},{"id":"ref-for-reject\u2460"},{"id":"ref-for-reject\u2461"},{"id":"ref-for-reject\u2462"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#reject"},
 "bdbd19d1": {"dfnID":"bdbd19d1","dfnText":"Promise","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-promise"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#idl-promise"},
 "c6a33477": {"dfnID":"c6a33477","dfnText":"time","external":true,"refSections":[{"refs":[{"id":"ref-for-xrframe-time"},{"id":"ref-for-xrframe-time\u2460"}],"title":"4.1. XRPlaneSet"},{"refs":[{"id":"ref-for-xrframe-time\u2461"}],"title":"5.1. Native plane detection"}],"url":"https://immersive-web.github.io/webxr/#xrframe-time"},
+"ca22f924": {"dfnID":"ca22f924","dfnText":"ended","external":true,"refSections":[{"refs":[{"id":"ref-for-xrsession-ended"}],"title":"4.1. XRPlaneSet"}],"url":"https://immersive-web.github.io/webxr/#xrsession-ended"},
 "correspond-to": {"dfnID":"correspond-to","dfnText":"correspond to","external":false,"refSections":[{"refs":[{"id":"ref-for-correspond-to"}],"title":"4.1. XRPlaneSet"}],"url":"#correspond-to"},
 "create-plane-object": {"dfnID":"create-plane-object","dfnText":"create plane object","external":false,"refSections":[{"refs":[{"id":"ref-for-create-plane-object"}],"title":"4.1. XRPlaneSet"}],"url":"#create-plane-object"},
 "d6345ec4": {"dfnID":"d6345ec4","dfnText":"capable of supporting","external":true,"refSections":[{"refs":[{"id":"ref-for-capable-of-supporting"},{"id":"ref-for-capable-of-supporting\u2460"}],"title":"2.1. Feature descriptor"}],"url":"https://immersive-web.github.io/webxr/#capable-of-supporting"},
+"dacde8b5": {"dfnID":"dacde8b5","dfnText":"a new promise","external":true,"refSections":[{"refs":[{"id":"ref-for-a-new-promise"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#a-new-promise"},
+"dca2de17": {"dfnID":"dca2de17","dfnText":"DOMException","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-DOMException"},{"id":"ref-for-idl-DOMException\u2460"},{"id":"ref-for-idl-DOMException\u2461"},{"id":"ref-for-idl-DOMException\u2462"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#idl-DOMException"},
 "dcf5fafa": {"dfnID":"dcf5fafa","dfnText":"FrozenArray","external":true,"refSections":[{"refs":[{"id":"ref-for-idl-frozen-array"}],"title":"3.2. XRPlane"}],"url":"https://webidl.spec.whatwg.org/#idl-frozen-array"},
 "dom-xrframe-detectedplanes": {"dfnID":"dom-xrframe-detectedplanes","dfnText":"detectedPlanes","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-xrframe-detectedplanes"},{"id":"ref-for-dom-xrframe-detectedplanes\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"#dom-xrframe-detectedplanes"},
 "dom-xrplane-lastchangedtime": {"dfnID":"dom-xrplane-lastchangedtime","dfnText":"lastChangedTime","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-xrplane-lastchangedtime"},{"id":"ref-for-dom-xrplane-lastchangedtime\u2460"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-dom-xrplane-lastchangedtime\u2461"}],"title":"4.1. XRPlaneSet"}],"url":"#dom-xrplane-lastchangedtime"},
@@ -1501,7 +1567,7 @@ let dfnPanelData = {
 "dom-xrplane-semanticlabel": {"dfnID":"dom-xrplane-semanticlabel","dfnText":"semanticLabel","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-xrplane-semanticlabel"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-dom-xrplane-semanticlabel\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"#dom-xrplane-semanticlabel"},
 "dom-xrplaneorientation-horizontal": {"dfnID":"dom-xrplaneorientation-horizontal","dfnText":"\"horizontal\"","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-xrplaneorientation-horizontal"}],"title":"3.1. XRPlaneOrientation"},{"refs":[{"id":"ref-for-dom-xrplaneorientation-horizontal\u2460"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-dom-xrplaneorientation-horizontal\u2461"}],"title":"4.1. XRPlaneSet"}],"url":"#dom-xrplaneorientation-horizontal"},
 "dom-xrplaneorientation-vertical": {"dfnID":"dom-xrplaneorientation-vertical","dfnText":"\"vertical\"","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-xrplaneorientation-vertical"}],"title":"3.1. XRPlaneOrientation"},{"refs":[{"id":"ref-for-dom-xrplaneorientation-vertical\u2460"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-dom-xrplaneorientation-vertical\u2461"}],"title":"4.1. XRPlaneSet"}],"url":"#dom-xrplaneorientation-vertical"},
-"dom-xrsession-initiateroomcapture": {"dfnID":"dom-xrsession-initiateroomcapture","dfnText":"initiateRoomCapture","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-xrsession-initiateroomcapture"},{"id":"ref-for-dom-xrsession-initiateroomcapture\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"#dom-xrsession-initiateroomcapture"},
+"dom-xrsession-initiateroomcapture": {"dfnID":"dom-xrsession-initiateroomcapture","dfnText":"initiateRoomCapture","external":false,"refSections":[{"refs":[{"id":"ref-for-dom-xrsession-initiateroomcapture"}],"title":"4.1. XRPlaneSet"}],"url":"#dom-xrsession-initiateroomcapture"},
 "enumdef-xrplaneorientation": {"dfnID":"enumdef-xrplaneorientation","dfnText":"XRPlaneOrientation","external":false,"refSections":[{"refs":[{"id":"ref-for-enumdef-xrplaneorientation"}],"title":"3.2. XRPlane"}],"url":"#enumdef-xrplaneorientation"},
 "native-plane-detection": {"dfnID":"native-plane-detection","dfnText":"native plane detection","external":false,"refSections":[{"refs":[{"id":"ref-for-native-plane-detection"}],"title":"2.1. Feature descriptor"},{"refs":[{"id":"ref-for-native-plane-detection\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"#native-plane-detection"},
 "native-plane-objects": {"dfnID":"native-plane-objects","dfnText":"native plane objects","external":false,"refSections":[{"refs":[{"id":"ref-for-native-plane-objects"},{"id":"ref-for-native-plane-objects\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"#native-plane-objects"},
@@ -1509,10 +1575,12 @@ let dfnPanelData = {
 "semantic-label": {"dfnID":"semantic-label","dfnText":"semantic label","external":false,"refSections":[{"refs":[{"id":"ref-for-semantic-label"},{"id":"ref-for-semantic-label\u2460"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-semantic-label\u2461"}],"title":"4.1. XRPlaneSet"}],"url":"#semantic-label"},
 "update-plane-object": {"dfnID":"update-plane-object","dfnText":"update plane object","external":false,"refSections":[{"refs":[{"id":"ref-for-update-plane-object"},{"id":"ref-for-update-plane-object\u2460"}],"title":"4.1. XRPlaneSet"},{"refs":[{"id":"ref-for-update-plane-object\u2461"}],"title":"6. Privacy & Security Considerations"}],"url":"#update-plane-object"},
 "update-planes": {"dfnID":"update-planes","dfnText":"update planes","external":false,"refSections":[{"refs":[{"id":"ref-for-update-planes"}],"title":"2.1. Feature descriptor"},{"refs":[{"id":"ref-for-update-planes\u2460"}],"title":"4.1. XRPlaneSet"},{"refs":[{"id":"ref-for-update-planes\u2461"}],"title":"6. Privacy & Security Considerations"}],"url":"#update-planes"},
+"xr-device-room-capture-method": {"dfnID":"xr-device-room-capture-method","dfnText":"room capture method","external":false,"refSections":[{"refs":[{"id":"ref-for-xr-device-room-capture-method"}],"title":"4.1. XRPlaneSet"}],"url":"#xr-device-room-capture-method"},
 "xrplane": {"dfnID":"xrplane","dfnText":"XRPlane","external":false,"refSections":[{"refs":[{"id":"ref-for-xrplane"},{"id":"ref-for-xrplane\u2460"},{"id":"ref-for-xrplane\u2461"},{"id":"ref-for-xrplane\u2462"}],"title":"3.2. XRPlane"},{"refs":[{"id":"ref-for-xrplane\u2463"},{"id":"ref-for-xrplane\u2464"},{"id":"ref-for-xrplane\u2465"},{"id":"ref-for-xrplane\u2466"}],"title":"4.1. XRPlaneSet"}],"url":"#xrplane"},
 "xrplane-frame": {"dfnID":"xrplane-frame","dfnText":"frame","external":false,"refSections":[{"refs":[{"id":"ref-for-xrplane-frame"}],"title":"4.1. XRPlaneSet"}],"url":"#xrplane-frame"},
 "xrplane-native-entity": {"dfnID":"xrplane-native-entity","dfnText":"native entity","external":false,"refSections":[{"refs":[{"id":"ref-for-xrplane-native-entity"}],"title":"4.1. XRPlaneSet"}],"url":"#xrplane-native-entity"},
 "xrplaneset": {"dfnID":"xrplaneset","dfnText":"XRPlaneSet","external":false,"refSections":[{"refs":[{"id":"ref-for-xrplaneset"},{"id":"ref-for-xrplaneset\u2460"}],"title":"4.1. XRPlaneSet"}],"url":"#xrplaneset"},
+"xrsession-room-capture-completed": {"dfnID":"xrsession-room-capture-completed","dfnText":"room capture completed","external":false,"refSections":[{"refs":[{"id":"ref-for-xrsession-room-capture-completed"},{"id":"ref-for-xrsession-room-capture-completed\u2460"},{"id":"ref-for-xrsession-room-capture-completed\u2461"}],"title":"4.1. XRPlaneSet"}],"url":"#xrsession-room-capture-completed"},
 "xrsession-set-of-tracked-planes": {"dfnID":"xrsession-set-of-tracked-planes","dfnText":"set of tracked planes","external":false,"refSections":[{"refs":[{"id":"ref-for-xrsession-set-of-tracked-planes"},{"id":"ref-for-xrsession-set-of-tracked-planes\u2460"},{"id":"ref-for-xrsession-set-of-tracked-planes\u2461"},{"id":"ref-for-xrsession-set-of-tracked-planes\u2462"},{"id":"ref-for-xrsession-set-of-tracked-planes\u2463"}],"title":"4.1. XRPlaneSet"}],"url":"#xrsession-set-of-tracked-planes"},
 };
 
@@ -1920,44 +1988,54 @@ let refsData = {
 "#semantic-label": {"displayText":"semantic label","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"semantic label","type":"dfn","url":"#semantic-label"},
 "#update-plane-object": {"displayText":"update plane object","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"update plane object","type":"dfn","url":"#update-plane-object"},
 "#update-planes": {"displayText":"update planes","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"update planes","type":"dfn","url":"#update-planes"},
+"#xr-device-room-capture-method": {"displayText":"room capture method","export":true,"for_":["XR device"],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"room capture method","type":"dfn","url":"#xr-device-room-capture-method"},
 "#xrplane": {"displayText":"XRPlane","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"XRPlane","type":"interface","url":"#xrplane"},
 "#xrplane-frame": {"displayText":"frame","export":true,"for_":["XRPlane"],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"frame","type":"dfn","url":"#xrplane-frame"},
 "#xrplane-native-entity": {"displayText":"native entity","export":true,"for_":["XRPlane"],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"native entity","type":"dfn","url":"#xrplane-native-entity"},
 "#xrplaneset": {"displayText":"XRPlaneSet","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"XRPlaneSet","type":"interface","url":"#xrplaneset"},
+"#xrsession-room-capture-completed": {"displayText":"room capture completed","export":true,"for_":["XRSession"],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"room capture completed","type":"dfn","url":"#xrsession-room-capture-completed"},
 "#xrsession-set-of-tracked-planes": {"displayText":"set of tracked planes","export":true,"for_":["XRSession"],"level":"1","normative":true,"shortname":"webxr-plane-detection","spec":"webxr-plane-detection-1","status":"local","text":"set of tracked planes","type":"dfn","url":"#xrsession-set-of-tracked-planes"},
 "https://drafts.fxtf.org/geometry-1/#dompointreadonly": {"displayText":"DOMPointReadOnly","export":true,"for_":[],"level":"1","normative":true,"shortname":"geometry","spec":"geometry-1","status":"current","text":"DOMPointReadOnly","type":"interface","url":"https://drafts.fxtf.org/geometry-1/#dompointreadonly"},
+"https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm": {"displayText":"relevant realm","export":true,"for_":[],"level":"1","normative":true,"shortname":"html","spec":"html","status":"current","text":"relevant realm","type":"dfn","url":"https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm"},
+"https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task": {"displayText":"queue a task","export":true,"for_":[],"level":"1","normative":true,"shortname":"html","spec":"html","status":"current","text":"queue a task","type":"dfn","url":"https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task"},
 "https://immersive-web.github.io/anchors/#xr-anchor": {"displayText":"XRAnchor","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr anchors module","spec":"webxr anchors module","status":"anchor-block","text":"XRAnchor","type":"interface","url":"https://immersive-web.github.io/anchors/#xr-anchor"},
-"https://immersive-web.github.io/webxr/#capable-of-supporting": {"displayText":"capable of supporting","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"capable of supporting","type":"dfn","url":"https://immersive-web.github.io/webxr/#capable-of-supporting"},
+"https://immersive-web.github.io/webxr/#capable-of-supporting": {"displayText":"capable of supporting","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"capable of supporting","type":"dfn","url":"https://immersive-web.github.io/webxr/#capable-of-supporting"},
 "https://immersive-web.github.io/webxr/#dom-xrframe-getpose": {"displayText":"getPose(space, baseSpace)","export":true,"for_":["XRFrame"],"level":"1","normative":true,"shortname":"webxr","spec":"webxr","status":"current","text":"getPose(space, baseSpace)","type":"method","url":"https://immersive-web.github.io/webxr/#dom-xrframe-getpose"},
-"https://immersive-web.github.io/webxr/#dom-xrframe-session": {"displayText":"session","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"session","type":"dfn","url":"https://immersive-web.github.io/webxr/#dom-xrframe-session"},
+"https://immersive-web.github.io/webxr/#dom-xrframe-session": {"displayText":"session","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"session","type":"dfn","url":"https://immersive-web.github.io/webxr/#dom-xrframe-session"},
 "https://immersive-web.github.io/webxr/#dom-xrframe-session_https://immersive-web.github.io/webxr/#dom-xrframe-session": {"displayText":"session","export":true,"for_":["XRFrame"],"level":"1","normative":true,"shortname":"webxr","spec":"webxr","status":"current","text":"session","type":"attribute","url":"https://immersive-web.github.io/webxr/#dom-xrframe-session"},
-"https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures": {"displayText":"list of enabled features","export":true,"for_":["XR device"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"list of enabled features","type":"dfn","url":"https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures"},
-"https://immersive-web.github.io/webxr/#feature-descriptor": {"displayText":"feature descriptor","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"feature descriptor","type":"dfn","url":"https://immersive-web.github.io/webxr/#feature-descriptor"},
-"https://immersive-web.github.io/webxr/#inline-xr-device": {"displayText":"inline XR device","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"inline xr device","type":"dfn","url":"https://immersive-web.github.io/webxr/#inline-xr-device"},
-"https://immersive-web.github.io/webxr/#quantization": {"displayText":"quantization","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"quantization","type":"dfn","url":"https://immersive-web.github.io/webxr/#quantization"},
-"https://immersive-web.github.io/webxr/#rounding": {"displayText":"rounding","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"rounding","type":"dfn","url":"https://immersive-web.github.io/webxr/#rounding"},
-"https://immersive-web.github.io/webxr/#xrframe-active": {"displayText":"active","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"active","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrframe-active"},
-"https://immersive-web.github.io/webxr/#xrframe-interface": {"displayText":"XRFrame","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"XRFrame","type":"interface","url":"https://immersive-web.github.io/webxr/#xrframe-interface"},
-"https://immersive-web.github.io/webxr/#xrframe-time": {"displayText":"time","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"time","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrframe-time"},
-"https://immersive-web.github.io/webxr/#xrsession-interface": {"displayText":"XRSession","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"XRSession","type":"interface","url":"https://immersive-web.github.io/webxr/#xrsession-interface"},
-"https://immersive-web.github.io/webxr/#xrsession-list-of-frame-updates": {"displayText":"list of frame updates","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"list of frame updates","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrsession-list-of-frame-updates"},
-"https://immersive-web.github.io/webxr/#xrsession-mode": {"displayText":"mode","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"mode","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrsession-mode"},
-"https://immersive-web.github.io/webxr/#xrsession-xr-device": {"displayText":"XR device","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"xr device","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrsession-xr-device"},
-"https://immersive-web.github.io/webxr/#xrspace-interface": {"displayText":"XRSpace","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"XRSpace","type":"interface","url":"https://immersive-web.github.io/webxr/#xrspace-interface"},
-"https://immersive-web.github.io/webxr/#xrspace-native-origin": {"displayText":"native origin","export":true,"for_":["XRSpace"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"native origin","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrspace-native-origin"},
-"https://immersive-web.github.io/webxr/#xrspace-session": {"displayText":"session","export":true,"for_":["XRSpace"],"level":"","normative":true,"shortname":"webxr device api - level 1","spec":"webxr device api - level 1","status":"anchor-block","text":"session","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrspace-session"},
+"https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures": {"displayText":"list of enabled features","export":true,"for_":["XR device"],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"list of enabled features","type":"dfn","url":"https://immersive-web.github.io/webxr/#dom-xrsession-enabledfeatures"},
+"https://immersive-web.github.io/webxr/#feature-descriptor": {"displayText":"feature descriptor","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"feature descriptor","type":"dfn","url":"https://immersive-web.github.io/webxr/#feature-descriptor"},
+"https://immersive-web.github.io/webxr/#inline-xr-device": {"displayText":"inline XR device","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"inline xr device","type":"dfn","url":"https://immersive-web.github.io/webxr/#inline-xr-device"},
+"https://immersive-web.github.io/webxr/#quantization": {"displayText":"quantization","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"quantization","type":"dfn","url":"https://immersive-web.github.io/webxr/#quantization"},
+"https://immersive-web.github.io/webxr/#rounding": {"displayText":"rounding","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"rounding","type":"dfn","url":"https://immersive-web.github.io/webxr/#rounding"},
+"https://immersive-web.github.io/webxr/#xrframe-active": {"displayText":"active","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"active","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrframe-active"},
+"https://immersive-web.github.io/webxr/#xrframe-interface": {"displayText":"XRFrame","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"XRFrame","type":"interface","url":"https://immersive-web.github.io/webxr/#xrframe-interface"},
+"https://immersive-web.github.io/webxr/#xrframe-time": {"displayText":"time","export":true,"for_":["XRFrame"],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"time","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrframe-time"},
+"https://immersive-web.github.io/webxr/#xrsession-ended": {"displayText":"ended","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"ended","type":"attribute","url":"https://immersive-web.github.io/webxr/#xrsession-ended"},
+"https://immersive-web.github.io/webxr/#xrsession-interface": {"displayText":"XRSession","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"XRSession","type":"interface","url":"https://immersive-web.github.io/webxr/#xrsession-interface"},
+"https://immersive-web.github.io/webxr/#xrsession-list-of-frame-updates": {"displayText":"list of frame updates","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"list of frame updates","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrsession-list-of-frame-updates"},
+"https://immersive-web.github.io/webxr/#xrsession-mode": {"displayText":"mode","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"mode","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrsession-mode"},
+"https://immersive-web.github.io/webxr/#xrsession-xr-device": {"displayText":"XR device","export":true,"for_":["XRSession"],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"xr device","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrsession-xr-device"},
+"https://immersive-web.github.io/webxr/#xrspace-interface": {"displayText":"XRSpace","export":true,"for_":[],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"XRSpace","type":"interface","url":"https://immersive-web.github.io/webxr/#xrspace-interface"},
+"https://immersive-web.github.io/webxr/#xrspace-native-origin": {"displayText":"native origin","export":true,"for_":["XRSpace"],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"native origin","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrspace-native-origin"},
+"https://immersive-web.github.io/webxr/#xrspace-session": {"displayText":"session","export":true,"for_":["XRSpace"],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"session","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrspace-session"},
 "https://immersive-web.github.io/webxr/#xrsystem": {"displayText":"XRSystem","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr","spec":"webxr","status":"current","text":"XRSystem","type":"interface","url":"https://immersive-web.github.io/webxr/#xrsystem"},
 "https://infra.spec.whatwg.org/#list-contain": {"displayText":"contain","export":true,"for_":["list","stack","queue","set"],"level":"1","normative":true,"shortname":"infra","spec":"infra","status":"current","text":"contain","type":"dfn","url":"https://infra.spec.whatwg.org/#list-contain"},
 "https://w3c.github.io/hr-time/#dom-domhighrestimestamp": {"displayText":"DOMHighResTimeStamp","export":true,"for_":[],"level":"3","normative":true,"shortname":"hr-time","spec":"hr-time-3","status":"current","text":"DOMHighResTimeStamp","type":"typedef","url":"https://w3c.github.io/hr-time/#dom-domhighrestimestamp"},
 "https://webidl.spec.whatwg.org/#Exposed": {"displayText":"Exposed","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"Exposed","type":"extended-attribute","url":"https://webidl.spec.whatwg.org/#Exposed"},
 "https://webidl.spec.whatwg.org/#SameObject": {"displayText":"SameObject","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"SameObject","type":"extended-attribute","url":"https://webidl.spec.whatwg.org/#SameObject"},
-"https://webidl.spec.whatwg.org/#dfn-throw": {"displayText":"throw","export":true,"for_":["exception"],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"throw","type":"dfn","url":"https://webidl.spec.whatwg.org/#dfn-throw"},
+"https://webidl.spec.whatwg.org/#a-new-promise": {"displayText":"a new promise","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"a new promise","type":"dfn","url":"https://webidl.spec.whatwg.org/#a-new-promise"},
+"https://webidl.spec.whatwg.org/#idl-DOMException": {"displayText":"DOMException","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"DOMException","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-DOMException"},
 "https://webidl.spec.whatwg.org/#idl-DOMString": {"displayText":"DOMString","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"DOMString","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-DOMString"},
 "https://webidl.spec.whatwg.org/#idl-frozen-array": {"displayText":"FrozenArray","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"FrozenArray","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-frozen-array"},
 "https://webidl.spec.whatwg.org/#idl-promise": {"displayText":"Promise","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"Promise","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-promise"},
 "https://webidl.spec.whatwg.org/#idl-undefined": {"displayText":"undefined","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"undefined","type":"interface","url":"https://webidl.spec.whatwg.org/#idl-undefined"},
 "https://webidl.spec.whatwg.org/#invalidstateerror": {"displayText":"InvalidStateError","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"InvalidStateError","type":"exception","url":"https://webidl.spec.whatwg.org/#invalidstateerror"},
 "https://webidl.spec.whatwg.org/#notsupportederror": {"displayText":"NotSupportedError","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"NotSupportedError","type":"exception","url":"https://webidl.spec.whatwg.org/#notsupportederror"},
+"https://webidl.spec.whatwg.org/#operationerror": {"displayText":"OperationError","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"OperationError","type":"exception","url":"https://webidl.spec.whatwg.org/#operationerror"},
+"https://webidl.spec.whatwg.org/#reject": {"displayText":"reject","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"reject","type":"dfn","url":"https://webidl.spec.whatwg.org/#reject"},
+"https://webidl.spec.whatwg.org/#resolve": {"displayText":"resolve","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"resolve","type":"dfn","url":"https://webidl.spec.whatwg.org/#resolve"},
+"https://webidl.spec.whatwg.org/#this": {"displayText":"this","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"this","type":"dfn","url":"https://webidl.spec.whatwg.org/#this"},
 };
 
 function mkRefHint(link, ref) {
