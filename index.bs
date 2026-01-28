@@ -1,8 +1,8 @@
 <pre class="metadata">
 Shortname: webxr-plane-detection
 Title: WebXR Plane Detection Module
-Group: immersivewebcg
-Status: CG-DRAFT
+Group: immersivewebwg
+Status: ED
 Level: 1
 ED: https://immersive-web.github.io/plane-detection/
 Repository: immersive-web/plane-detection
