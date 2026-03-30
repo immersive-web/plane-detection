@@ -7,6 +7,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <meta content="Bikeshed version 0ef803fdf, updated Tue Jan 6 11:59:39 2026 -0800" name="generator">
   <link href="https://immersive-web.github.io/plane-detection/" rel="canonical">
+  <meta content="394f13ee76d31f3885eb1237777cf2ecb1b87cbc" name="revision">
   <meta content="dark light" name="color-scheme">
   <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css">
 <style>
@@ -779,7 +780,7 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
 </p>
    <h1 class="no-ref p-name" id="title">WebXR Plane Detection Module</h1>
    <p id="w3c-state"><a href="https://www.w3.org/standards/types/#ED">Editor’s Draft</a>,
-    <time class="dt-updated" datetime="2026-01-29">29 January 2026</time></p>
+    <time class="dt-updated" datetime="2026-03-30">30 March 2026</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -795,7 +796,7 @@ var[data-var-color="6"] { --var-vg: #FFBCF2; }
       <dd class="editor h-card p-author vcard" data-editor-id="114482"><a class="email fn p-name u-email" href="mailto:bialpio@google.com">Piotr Bialecki</a> (<a class="org p-org" href="https://google.com/">Google</a>)
       <dt>Participate:
       <dd><a href="https://github.com/immersive-web/plane-detection/issues/new">File an issue</a> (<a href="https://github.com/immersive-web/plane-detection/issues">open issues</a>)
-      <dd><a href="https://lists.w3.org/Archives/Public/public-immersive-web/">Mailing list archive</a>
+      <dd><a href="https://lists.w3.org/Archives/Public/public-immersive-web-wg/">Mailing list archive</a>
       <dd><a href="irc://irc.w3.org:6665/">W3C’s #immersive-web IRC</a>
      </dl>
     </div>
@@ -934,7 +935,7 @@ The following code demonstrates how a session that requires plane detection coul
 
     <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-frozen-array" id="ref-for-idl-frozen-array"><c- b>FrozenArray</c-></a>&lt;<a data-link-type="idl-name" href="https://drafts.csswg.org/geometry-1/#dompointreadonly" id="ref-for-dompointreadonly"><c- n>DOMPointReadOnly</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRPlane" data-dfn-type="attribute" data-export data-readonly data-type="FrozenArray<DOMPointReadOnly>" id="dom-xrplane-polygon"><code><c- g>polygon</c-></code></dfn>;
     <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#enumdef-xrplaneorientation" id="ref-for-enumdef-xrplaneorientation"><c- n>XRPlaneOrientation</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="XRPlane" data-dfn-type="attribute" data-export data-readonly data-type="XRPlaneOrientation?" id="dom-xrplane-orientation"><code><c- g>orientation</c-></code></dfn>;
-    <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://w3c.github.io/hr-time/#dom-domhighrestimestamp" id="ref-for-dom-domhighrestimestamp"><c- n>DOMHighResTimeStamp</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRPlane" data-dfn-type="attribute" data-export data-readonly data-type="DOMHighResTimeStamp" id="dom-xrplane-lastchangedtime"><code><c- g>lastChangedTime</c-></code></dfn>;
+    <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://w3c.github.io/hr-time/#typedefdef-domhighrestimestamp" id="ref-for-typedefdef-domhighrestimestamp"><c- n>DOMHighResTimeStamp</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRPlane" data-dfn-type="attribute" data-export data-readonly data-type="DOMHighResTimeStamp" id="dom-xrplane-lastchangedtime"><code><c- g>lastChangedTime</c-></code></dfn>;
     <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString"><c- b>DOMString</c-></a>? <dfn class="dfn-paneled idl-code" data-dfn-for="XRPlane" data-dfn-type="attribute" data-export data-readonly data-type="DOMString?" id="dom-xrplane-semanticlabel"><code><c- g>semanticLabel</c-></code></dfn>;
 };
 </pre>
@@ -1256,7 +1257,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
    <li>
     <a data-link-type="biblio">[HR-TIME-3]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="0e9f636b">DOMHighResTimeStamp</span>
+     <li><span class="dfn-paneled" id="00c8c5e6">DOMHighResTimeStamp</span>
     </ul>
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
@@ -1352,7 +1353,7 @@ In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="updat
 
     <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-frozen-array"><c- b>FrozenArray</c-></a>&lt;<a data-link-type="idl-name" href="https://drafts.csswg.org/geometry-1/#dompointreadonly"><c- n>DOMPointReadOnly</c-></a>> <a data-readonly data-type="FrozenArray<DOMPointReadOnly>" href="#dom-xrplane-polygon"><code><c- g>polygon</c-></code></a>;
     <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#enumdef-xrplaneorientation"><c- n>XRPlaneOrientation</c-></a>? <a data-readonly data-type="XRPlaneOrientation?" href="#dom-xrplane-orientation"><code><c- g>orientation</c-></code></a>;
-    <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://w3c.github.io/hr-time/#dom-domhighrestimestamp"><c- n>DOMHighResTimeStamp</c-></a> <a data-readonly data-type="DOMHighResTimeStamp" href="#dom-xrplane-lastchangedtime"><code><c- g>lastChangedTime</c-></code></a>;
+    <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="https://w3c.github.io/hr-time/#typedefdef-domhighrestimestamp"><c- n>DOMHighResTimeStamp</c-></a> <a data-readonly data-type="DOMHighResTimeStamp" href="#dom-xrplane-lastchangedtime"><code><c- g>lastChangedTime</c-></code></a>;
     <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><c- b>DOMString</c-></a>? <a data-readonly data-type="DOMString?" href="#dom-xrplane-semanticlabel"><code><c- g>semanticLabel</c-></code></a>;
 };
 
@@ -1570,7 +1571,7 @@ function parseHTML(markup) {
 "use strict";
 {
 let dfnPanelData = {
-"0e9f636b": {"dfnID":"0e9f636b","dfnText":"DOMHighResTimeStamp","external":true,"refSections":[{"refs":[{"id":"ref-for-dom-domhighrestimestamp"}],"title":"3.2. XRPlane"}],"url":"https://w3c.github.io/hr-time/#dom-domhighrestimestamp"},
+"00c8c5e6": {"dfnID":"00c8c5e6","dfnText":"DOMHighResTimeStamp","external":true,"refSections":[{"refs":[{"id":"ref-for-typedefdef-domhighrestimestamp"}],"title":"3.2. XRPlane"}],"url":"https://w3c.github.io/hr-time/#typedefdef-domhighrestimestamp"},
 "1776cb35": {"dfnID":"1776cb35","dfnText":"quantization","external":true,"refSections":[{"refs":[{"id":"ref-for-quantization"},{"id":"ref-for-quantization\u2460"}],"title":"6. Privacy & Security Considerations"}],"url":"https://immersive-web.github.io/webxr/#quantization"},
 "3182eb71": {"dfnID":"3182eb71","dfnText":"NotSupportedError","external":true,"refSections":[{"refs":[{"id":"ref-for-notsupportederror"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#notsupportederror"},
 "34443090": {"dfnID":"34443090","dfnText":"OperationError","external":true,"refSections":[{"refs":[{"id":"ref-for-operationerror"}],"title":"4.1. XRPlaneSet"}],"url":"https://webidl.spec.whatwg.org/#operationerror"},
@@ -2074,7 +2075,7 @@ let refsData = {
 "https://immersive-web.github.io/webxr/#xrspace-session": {"displayText":"session","export":true,"for_":["XRSpace"],"level":"","normative":true,"shortname":"webxr","spec":"webxr","status":"anchor-block","text":"session","type":"dfn","url":"https://immersive-web.github.io/webxr/#xrspace-session"},
 "https://immersive-web.github.io/webxr/#xrsystem": {"displayText":"XRSystem","export":true,"for_":[],"level":"1","normative":true,"shortname":"webxr","spec":"webxr","status":"current","text":"XRSystem","type":"interface","url":"https://immersive-web.github.io/webxr/#xrsystem"},
 "https://infra.spec.whatwg.org/#list-contain": {"displayText":"contain","export":true,"for_":["list","stack","queue","set"],"level":"1","normative":true,"shortname":"infra","spec":"infra","status":"current","text":"contain","type":"dfn","url":"https://infra.spec.whatwg.org/#list-contain"},
-"https://w3c.github.io/hr-time/#dom-domhighrestimestamp": {"displayText":"DOMHighResTimeStamp","export":true,"for_":[],"level":"3","normative":true,"shortname":"hr-time","spec":"hr-time-3","status":"current","text":"DOMHighResTimeStamp","type":"typedef","url":"https://w3c.github.io/hr-time/#dom-domhighrestimestamp"},
+"https://w3c.github.io/hr-time/#typedefdef-domhighrestimestamp": {"displayText":"DOMHighResTimeStamp","export":true,"for_":[],"level":"3","normative":true,"shortname":"hr-time","spec":"hr-time-3","status":"current","text":"DOMHighResTimeStamp","type":"typedef","url":"https://w3c.github.io/hr-time/#typedefdef-domhighrestimestamp"},
 "https://webidl.spec.whatwg.org/#Exposed": {"displayText":"Exposed","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"Exposed","type":"extended-attribute","url":"https://webidl.spec.whatwg.org/#Exposed"},
 "https://webidl.spec.whatwg.org/#SameObject": {"displayText":"SameObject","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"SameObject","type":"extended-attribute","url":"https://webidl.spec.whatwg.org/#SameObject"},
 "https://webidl.spec.whatwg.org/#a-new-promise": {"displayText":"a new promise","export":true,"for_":[],"level":"1","normative":true,"shortname":"webidl","spec":"webidl","status":"current","text":"a new promise","type":"dfn","url":"https://webidl.spec.whatwg.org/#a-new-promise"},
