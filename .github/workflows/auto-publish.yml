@@ -5,7 +5,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'images/**'
+      - 'img/**'
       - 'index.bs'
 
 jobs:
